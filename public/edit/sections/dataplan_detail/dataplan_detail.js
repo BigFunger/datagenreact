@@ -3,7 +3,7 @@ import { uiModules } from 'ui/modules';
 import template from './dataplan_detail.html';
 import './dataplan_detail.less';
 
-const app = uiModules.get('datagen');
+const app = uiModules.get('datagenreact');
 
 app.directive('dataplanDetail', function () {
   return {

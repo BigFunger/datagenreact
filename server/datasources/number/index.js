@@ -1,9 +1,9 @@
 import { NumberSource } from './number_source';
 
 export function registerNumber (server) {
-  const datagen = server.plugins.datagen;
+  const datagenreact = server.plugins.datagenreact;
 
-  datagen.datasources.register({
+  datagenreact.datasources.register({
     number: {
       class: NumberSource
     }

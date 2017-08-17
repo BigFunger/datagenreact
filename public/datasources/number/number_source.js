@@ -1,5 +1,5 @@
 import { assign } from 'lodash';
-import { Datasource } from 'plugins/datagen/lib/datasource';
+import { Datasource } from 'plugins/datagenreact/lib/datasource';
 
 export class NumberSource extends Datasource {
   constructor(model) {

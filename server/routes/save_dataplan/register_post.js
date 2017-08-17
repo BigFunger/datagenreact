@@ -7,7 +7,7 @@ function saveDataplan(callWithRequest, dataplanId, dataplan) {
   };
 
   return callWithRequest('index', {
-    index: 'datagen',
+    index: 'datagenreact',
     type: 'dataplan',
     id: dataplanId,
     body: body
@@ -16,7 +16,7 @@ function saveDataplan(callWithRequest, dataplanId, dataplan) {
 
 export default (server) => {
   server.route({
-    path: '/api/kibana/datagen/save/{id}',
+    path: '/api/kibana/datagenreact/save/{id}',
     method: 'POST',
     handler: function (request, reply) {
       const dataplanId = request.params.id;

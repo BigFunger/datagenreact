@@ -2,7 +2,7 @@ import { uiModules } from 'ui/modules';
 import template from './datasources_nav.html';
 import './datasources_nav.less';
 
-const app = uiModules.get('datagen');
+const app = uiModules.get('datagenreact');
 
 app.directive('datasourcesNav', function () {
   return {

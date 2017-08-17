@@ -1,9 +1,9 @@
 import { TextSource } from './text_source';
 
 export function registerText (server) {
-  const datagen = server.plugins.datagen;
+  const datagenreact = server.plugins.datagenreact;
 
-  datagen.datasources.register({
+  datagenreact.datasources.register({
     text: {
       class: TextSource
     }

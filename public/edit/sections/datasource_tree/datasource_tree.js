@@ -3,7 +3,7 @@ import { uiModules } from 'ui/modules';
 import template from './datasource_tree.html';
 import './datasource_tree.less';
 
-const app = uiModules.get('datagen');
+const app = uiModules.get('datagenreact');
 
 app.directive('datasourceTree', function () {
   return {

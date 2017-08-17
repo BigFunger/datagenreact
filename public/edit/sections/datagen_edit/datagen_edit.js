@@ -4,13 +4,13 @@ import { Notifier } from 'ui/notify/notifier';
 import generateDataTemplate from './generate_data_partial.html';
 import loadTemplate from './load_partial.html';
 import saveTemplate from './save_partial.html';
-import { DatagenProvider } from 'plugins/datagen/service';
+import { DatagenProvider } from 'plugins/datagenreact/service';
 import './datagen_edit.less';
-import datasourceRegistryProvider from 'plugins/datagen/datasource_registry';
+import datasourceRegistryProvider from 'plugins/datagenreact/datasource_registry';
 import angular from 'angular';
-import { Dataplan } from 'plugins/datagen/lib/dataplan';
+import { Dataplan } from 'plugins/datagenreact/lib/dataplan';
 
-const app = uiModules.get('datagen');
+const app = uiModules.get('datagenreact');
 
 app.directive('datagenEdit', function () {
   return {

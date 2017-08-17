@@ -3,7 +3,7 @@ import { callWithRequestFactory } from '../../lib/call_with_request_factory';
 
 function loadMapping(callWithRequest) {
   return callWithRequest('transport.request', {
-    path: `/datagen/_mapping/dataplan`,
+    path: `/datagenreact/_mapping/dataplan`,
     method: 'GET'
   })
   .then((response) => {
@@ -33,7 +33,7 @@ function createMapping(callWithRequest) {
   };
 
   return callWithRequest('transport.request', {
-    path: `/datagen`,
+    path: `/datagenreact`,
     method: 'PUT',
     body: body
   });
@@ -41,7 +41,7 @@ function createMapping(callWithRequest) {
 
 export default (server) => {
   server.route({
-    path: '/api/kibana/datagen/init',
+    path: '/api/kibana/datagenreact/init',
     method: 'POST',
     handler: function (request, reply) {
       const callWithRequest = callWithRequestFactory(server, request);

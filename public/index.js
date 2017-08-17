@@ -1,3 +1,3 @@
 import './datasources';
-import './edit';
+import './sections';
 import './management_section';

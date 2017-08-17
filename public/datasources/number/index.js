@@ -1,4 +1,4 @@
-import registry from 'plugins/datagen/datasource_registry';
+import registry from 'plugins/datagenreact/datasource_registry';
 import { NumberSource } from './number_source';
 import './number_source_ui';
 

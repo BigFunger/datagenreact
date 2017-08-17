@@ -7,7 +7,7 @@ import { generateData } from './generate_data';
 
 export default (server) => {
   server.route({
-    path: '/api/kibana/datagen/generate',
+    path: '/api/kibana/datagenreact/generate',
     method: 'POST',
     handler: function (request, reply) {
       const callWithRequest = callWithRequestFactory(server, request);

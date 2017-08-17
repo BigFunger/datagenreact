@@ -1,7 +1,7 @@
 import chrome from 'ui/chrome';
 
 export function DatagenProvider($http, $q, Private) {
-  const apiPrefix = chrome.addBasePath('/api/kibana/datagen');
+  const apiPrefix = chrome.addBasePath('/api/kibana/datagenreact');
 
   this.generate = (dataplan) => {
     return $http.post(`${apiPrefix}/generate`, dataplan)

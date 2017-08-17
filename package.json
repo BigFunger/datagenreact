@@ -1,6 +1,6 @@
 {
   "author": "Jim Unger",
-  "name": "datagen",
+  "name": "datagenreact",
   "license": "Apache-2.0",
   "description": "none",
   "scripts": {
@@ -16,7 +16,11 @@
     "jquery": "2.1.4",
     "lodash": "3.10.1",
     "moment": "2.11.2",
-    "node-uuid": "1.4.7"
+    "node-uuid": "1.4.7",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   },
   "kibana": {
     "version": "kibana"
@@ -24,7 +28,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/BigFunger/datagen.git"
+    "url": "https://github.com/BigFunger/datagenreact.git"
   },
   "devDependencies": {
     "@elastic/plugin-helpers": "~6.0.2",

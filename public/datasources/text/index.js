@@ -1,4 +1,4 @@
-import registry from 'plugins/datagen/datasource_registry';
+import registry from 'plugins/datagenreact/datasource_registry';
 import { TextSource } from './text_source';
 import './text_source_ui';
 

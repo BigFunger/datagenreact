@@ -2,7 +2,7 @@ import { once } from 'lodash';
 
 const callWithRequest = once((server) => {
   const config = Object.assign({ plugins: [ ] }, server.config().get('elasticsearch'));
-  const cluster = server.plugins.elasticsearch.createCluster('datagen', config);
+  const cluster = server.plugins.elasticsearch.createCluster('datagenreact', config);
 
   return cluster.callWithRequest;
 });

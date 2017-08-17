@@ -3,7 +3,7 @@ import { uiModules } from 'ui/modules';
 import template from './datasource_tree_item.html';
 import './datasource_tree_item.less';
 
-const app = uiModules.get('datagen');
+const app = uiModules.get('datagenreact');
 
 app.directive('datasourceTreeItem', function (RecursionHelper) {
   return {

@@ -1,7 +1,7 @@
 import { uiModules } from 'ui/modules';
 import { isFunction } from 'lodash';
 
-const app = uiModules.get('datagen');
+const app = uiModules.get('datagenreact');
 
 app.factory('RecursionHelper', function ($compile) {
   return {

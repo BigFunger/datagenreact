@@ -1,4 +1,4 @@
-import registry from 'plugins/datagen/datasource_registry';
+import registry from 'plugins/datagenreact/datasource_registry';
 import { KeywordSource } from './keyword_source';
 import './keyword_source_ui';
 

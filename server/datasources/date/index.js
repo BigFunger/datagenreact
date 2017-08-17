@@ -1,9 +1,9 @@
 import { DateSource } from './date_source';
 
 export function registerDate (server) {
-  const datagen = server.plugins.datagen;
+  const datagenreact = server.plugins.datagenreact;
 
-  datagen.datasources.register({
+  datagenreact.datasources.register({
     date: {
       class: DateSource
     }

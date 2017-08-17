@@ -3,7 +3,7 @@ import { callWithRequestFactory } from '../../lib/call_with_request_factory';
 
 function loadDataplan(callWithRequest, dataplanId) {
   return callWithRequest('get', {
-    index: 'datagen',
+    index: 'datagenreact',
     type: 'dataplan',
     id: dataplanId
   });
@@ -11,7 +11,7 @@ function loadDataplan(callWithRequest, dataplanId) {
 
 export default (server) => {
   server.route({
-    path: '/api/kibana/datagen/load/{id}',
+    path: '/api/kibana/datagenreact/load/{id}',
     method: 'GET',
     handler: function (request, reply) {
       const dataplanId = request.params.id;

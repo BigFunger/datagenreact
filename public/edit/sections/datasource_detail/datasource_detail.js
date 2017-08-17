@@ -5,7 +5,7 @@ import template from './datasource_detail.html';
 import './datasource_detail.less';
 import gaussian from 'gaussian';
 
-const app = uiModules.get('datagen');
+const app = uiModules.get('datagenreact');
 
 app.directive('datasourceDetail', function ($compile, $timeout) {
   return {

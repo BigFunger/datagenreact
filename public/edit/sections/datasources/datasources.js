@@ -3,7 +3,7 @@ import { uiModules } from 'ui/modules';
 import template from './datasources.html';
 import './datasources.less';
 
-const app = uiModules.get('datagen');
+const app = uiModules.get('datagenreact');
 
 app.directive('datasources', function () {
   return {

@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import { uiModules } from 'ui/modules';
 import template from './datasource_type_select.html';
-import datasourceRegistryProvider from 'plugins/datagen/datasource_registry';
+import datasourceRegistryProvider from 'plugins/datagenreact/datasource_registry';
 import './datasource_type_select.less';
 
-const app = uiModules.get('datagen');
+const app = uiModules.get('datagenreact');
 
 function buildDatasourceTypeList(datasourceRegistry) {
   const result = [];

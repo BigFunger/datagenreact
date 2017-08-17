@@ -18,7 +18,7 @@ function modifyDate(body) {
 }
 
 function indexDocument(callWithRequest, dataplan, server) {
-  const datasourceClasses = server.plugins.datagen.datasources.datasources;
+  const datasourceClasses = server.plugins.datagenreact.datasources.datasources;
   const body = {};
   _.forEach(dataplan.datasources, (datasource) => {
     const GeneratorClass = datasourceClasses[datasource.typeId].class;

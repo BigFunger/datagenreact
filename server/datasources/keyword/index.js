@@ -1,9 +1,9 @@
 import { KeywordSource } from './keyword_source';
 
 export function registerKeyword (server) {
-  const datagen = server.plugins.datagen;
+  const datagenreact = server.plugins.datagenreact;
 
-  datagen.datasources.register({
+  datagenreact.datasources.register({
     keyword: {
       class: KeywordSource
     }
