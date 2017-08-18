@@ -13,14 +13,11 @@ export const datagenList = (state = defaultState, action) => {
         ? !state.sortReverse
         : false;
 
-      return Object.assign(
-        {},
-        state,
-        {
-          sortField,
-          sortReverse
-        }
-      );
+      return {
+        ...state,
+        sortField,
+        sortReverse
+      };
     default:
       return state;
   }

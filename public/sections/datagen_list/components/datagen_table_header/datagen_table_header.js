@@ -20,6 +20,14 @@ export class DatagenTableHeader extends React.Component {
   }
 
   render = () => {
+    const columns = [
+      { field: 'id', label: 'Id' },
+      { field: 'indexName', label: 'Index Name' },
+      { field: 'typeName', label: 'Type Name' },
+      { field: 'dateCreated', label: 'Date created' },
+      { field: 'dateLastRun', label: 'Date last run' }
+    ];
+
     const { onSortChange } = this.props;
 
     return (
@@ -28,36 +36,16 @@ export class DatagenTableHeader extends React.Component {
           <th className="kuiTableHeaderCell kuiTableHeaderCell--checkBox">
             <input type="checkbox" className="kuiCheckBox" />
           </th>
-          <SortableColumn
-            field="id"
-            onClick={onSortChange}
-          >
-            Id
-          </SortableColumn>
-          <SortableColumn
-            field="indexName"
-            onClick={onSortChange}
-          >
-          Index Name
-          </SortableColumn>
-          <SortableColumn
-            field="typeName"
-            onClick={onSortChange}
-          >
-          Type Name
-          </SortableColumn>
-          <SortableColumn
-            field="dateCreated"
-            onClick={onSortChange}
-          >
-          Date created
-          </SortableColumn>
-          <SortableColumn
-            field="dateLastRun"
-            onClick={onSortChange}
-          >
-          Date last run
-          </SortableColumn>
+          {
+            columns.map(column => (
+              <SortableColumn
+                field={column.field}
+                onClick={onSortChange}
+              >
+                {column.label}
+              </SortableColumn>
+            ))
+          }
         </KuiTheadRow>
       </KuiThead>
     );
