@@ -11,7 +11,6 @@ export const datagenList = (state = defaultState, action) => {
 
   switch(type) {
     case 'DATAGEN_LIST_SET_SORT':
-      debugger;
       const { field: sortField } = action;
       const sortReverse = (sortField === state.sortField)
         ? !state.sortReverse
@@ -22,8 +21,7 @@ export const datagenList = (state = defaultState, action) => {
         sortField,
         sortReverse,
         dataplans: dataplans(state.dataplans, {
-          type,
-          sortField,
+          ...action,
           sortReverse
         })
       };
