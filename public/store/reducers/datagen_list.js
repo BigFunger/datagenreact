@@ -1,6 +1,9 @@
+import { dataplans } from './dataplans';
+
 const defaultState = {
   sortField: 'indexName',
-  sortReverse: true
+  sortReverse: true,
+  dataplans: dataplans(undefined, {})
 };
 
 export const datagenList = (state = defaultState, action) => {
