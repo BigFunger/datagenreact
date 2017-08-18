@@ -4,8 +4,6 @@ import { DatagenList as PresentationComponent } from './datagen_list';
 const mapStateToProps = (state) => {
   const { dataplans } = state;
 
-  console.log(state, dataplans);
-
   return {
     dataplans
   }

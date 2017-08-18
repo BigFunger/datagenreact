@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import {
   KuiThead,
@@ -15,15 +14,13 @@ export class DatagenTableHeader extends React.Component {
     } = this.props;
 
     return {
-      sortField: 'id',
-      sortReverse: false
+      sortField,
+      sortReverse
     }
   }
 
   render = () => {
-    const onClick = (field) => {
-      console.log(`${field} clicked!`);
-    }
+    const { onSortChange } = this.props;
 
     return (
       <KuiThead>
@@ -33,31 +30,31 @@ export class DatagenTableHeader extends React.Component {
           </th>
           <SortableColumn
             field="id"
-            onClick={onClick}
+            onClick={onSortChange}
           >
             Id
           </SortableColumn>
           <SortableColumn
             field="indexName"
-            onClick={onClick}
+            onClick={onSortChange}
           >
           Index Name
           </SortableColumn>
           <SortableColumn
             field="typeName"
-            onClick={onClick}
+            onClick={onSortChange}
           >
           Type Name
           </SortableColumn>
           <SortableColumn
             field="dateCreated"
-            onClick={onClick}
+            onClick={onSortChange}
           >
           Date created
           </SortableColumn>
           <SortableColumn
             field="dateLastRun"
-            onClick={onClick}
+            onClick={onSortChange}
           >
           Date last run
           </SortableColumn>
@@ -67,7 +64,9 @@ export class DatagenTableHeader extends React.Component {
   }
 
   static propTypes = {
-    dataplans: PropTypes.array
+    sortField: PropTypes.string,
+    sortReverse: PropTypes.bool,
+    onSortChange: PropTypes.func
   }
 
   static childContextTypes = {

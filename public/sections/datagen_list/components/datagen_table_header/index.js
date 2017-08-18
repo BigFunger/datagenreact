@@ -2,15 +2,26 @@ import { connect } from 'react-redux';
 import { DatagenTableHeader as PresentationComponent } from './datagen_table_header';
 
 const mapStateToProps = (state) => {
-  const { dataplans } = state;
+  const { 
+    sortField,
+    sortReverse
+  } = state.datagenList;
 
   return {
-    dataplans
+    sortField,
+    sortReverse
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    onSortChange: (field) => {
+      dispatch({
+        type: 'DATAGEN_LIST_SET_SORT',
+        field
+      });
+    }
+  };
 }
 
 export const DatagenTableHeader = connect(

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 export class SortableColumn extends React.Component {
   render = () => {
     const {
-      field,
       children,
+      field,
       onClick
     } = this.props;
     const {
