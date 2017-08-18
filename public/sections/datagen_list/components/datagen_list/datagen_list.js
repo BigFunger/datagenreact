@@ -1,23 +1,27 @@
 import React from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
+import { KuiViewContent } from 'plugins/datagenreact/components';
+import { DatagenTable } from '../datagen_table';
+import { DatagenTableToolbar } from '../datagen_table_toolbar';
 
 export class DatagenList extends React.Component {
   render = () => {
     const {
-      totalDataplans,
-      onAddClick
+      dataplans
     } = this.props;
 
     return (
-      <div>
-        <h1>I am the datagen list!</h1>
-        <h2>{ totalDataplans }</h2>
-        <button onClick={ onAddClick }>Click me to increment the counter</button>
-      </div>
+      <KuiViewContent>
+        <div className="kuiViewContentItem kuiControlledTable kuiVerticalRhythm">
+          <DatagenTableToolbar />
+          <DatagenTable />
+        </div>
+      </KuiViewContent>
     );
   }
 
   static propTypes = {
-    totalDataplans: PropTypes.number
+    dataplans: PropTypes.array
   }
 }

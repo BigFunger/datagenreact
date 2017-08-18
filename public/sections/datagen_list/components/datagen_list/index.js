@@ -1,1 +1,28 @@
-export { DatagenList } from './datagen_list_container';
+import { connect } from 'react-redux';
+import { DatagenList as PresentationComponent } from './datagen_list';
+
+const mapStateToProps = (state) => {
+  const { dataplans } = state;
+
+  console.log(state, dataplans);
+
+  return {
+    dataplans
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddClick: () => {
+      dispatch({
+        type: 'ADD_DATAPLAN',
+        name: 'foobar'
+      });
+    }
+  }
+}
+
+export const DatagenList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PresentationComponent);
