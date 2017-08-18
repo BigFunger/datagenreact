@@ -7,11 +7,12 @@ const defaultState = {
 };
 
 export const datagenList = (state = defaultState, action) => {
-  const { type, field } = action;
+  const { type } = action;
 
   switch(type) {
     case 'DATAGEN_LIST_SET_SORT':
-      const sortField = field;
+      debugger;
+      const { field: sortField } = action;
       const sortReverse = (sortField === state.sortField)
         ? !state.sortReverse
         : false;
@@ -19,7 +20,12 @@ export const datagenList = (state = defaultState, action) => {
       return {
         ...state,
         sortField,
-        sortReverse
+        sortReverse,
+        dataplans: dataplans(state.dataplans, {
+          type,
+          sortField,
+          sortReverse
+        })
       };
     default:
       return state;
