@@ -17,15 +17,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSortChange: (field) => {
-      dispatch(datagenListSetSort({
+      dispatch(datagenListSetSort(
         field
-      }));
-      // dispatch({
-      //   type: 'DATAGEN_LIST_SET_SORT',
-      //   payload: {
-      //     field
-      //   }
-      // });
+      ));
     }
   };
 }

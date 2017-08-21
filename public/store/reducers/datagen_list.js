@@ -4,8 +4,7 @@ import { handleActions } from 'redux-actions';
 
 const defaultState = {
   sortField: 'indexName',
-  sortReverse: true,
-  dataplans: dataplans(undefined, {})
+  sortReverse: true
 };
 
 export const datagenList = handleActions({
@@ -18,14 +17,7 @@ export const datagenList = handleActions({
     return {
       ...state,
       sortField,
-      sortReverse,
-      dataplans: dataplans(state.dataplans, {
-        type: action.type,
-        payload: {
-          ...action.payload,
-          sortReverse
-        }
-      })
+      sortReverse
     };
   }
 }, defaultState);

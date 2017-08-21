@@ -1,18 +1,27 @@
 import { sortByOrder } from 'lodash';
-import { datagenListSetSort } from 'plugins/datagenreact/store/actions';
+import { datagenListSetSort, dataplansSetSort } from 'plugins/datagenreact/store/actions';
 import { handleActions } from 'redux-actions';
 
 const defaultState = [];
 
 
 export const dataplans = handleActions({
-  [datagenListSetSort](state, action) {
+  // [datagenListSetSort](state, action) {
+  //     const {
+  //       field,
+  //       sortReverse
+  //     } = action.payload;
+  //     const direction = sortReverse ? 'desc' : 'asc';
+
+  //     return sortByOrder(state, [field], [direction]);
+  // },
+  [dataplansSetSort](state, action) {
       const {
-        field,
+        sortField,
         sortReverse
       } = action.payload;
       const direction = sortReverse ? 'desc' : 'asc';
 
-      return sortByOrder(state, [field], [direction]);
+      return sortByOrder(state, [sortField], [direction]);
   }
 }, defaultState);
