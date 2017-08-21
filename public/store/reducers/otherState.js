@@ -1,5 +1,5 @@
 const defaultState = {
-  totalDataplans: 12
+  foo: 'bar'
 };
 
 export const otherState = (state = defaultState, action) => {

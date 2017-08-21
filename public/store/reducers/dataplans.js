@@ -1,11 +1,11 @@
 import { sortByOrder } from 'lodash';
-import { dataplansSetSort } from 'plugins/datagenreact/store/actions';
+import { datagenListApplyFilters } from 'plugins/datagenreact/store/actions';
 import { handleActions } from 'redux-actions';
 
 const defaultState = [];
 
 export const dataplans = handleActions({
-  [dataplansSetSort](state, action) {
+  [datagenListApplyFilters](state, action) {
     const {
       sortField,
       sortReverse
