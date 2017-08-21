@@ -30,6 +30,7 @@ export class DatagenTableHeader extends React.Component {
       { field: 'dateLastRun', label: 'Date last run' }
     ].map(column => (
       <SortableColumn
+        key={column.field}
         field={column.field}
         onClick={onSortChange}
       >

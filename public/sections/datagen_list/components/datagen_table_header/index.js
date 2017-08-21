@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { DatagenTableHeader as PresentationComponent } from './datagen_table_header';
+import { datagenListSetSort } from 'plugins/datagenreact/store/actions';
 
 const mapStateToProps = (state) => {
   const { 
@@ -16,10 +17,15 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSortChange: (field) => {
-      dispatch({
-        type: 'DATAGEN_LIST_SET_SORT',
+      dispatch(datagenListSetSort({
         field
-      });
+      }));
+      // dispatch({
+      //   type: 'DATAGEN_LIST_SET_SORT',
+      //   payload: {
+      //     field
+      //   }
+      // });
     }
   };
 }

@@ -4,10 +4,6 @@ const defaultState = {
 
 export const otherState = (state = defaultState, action) => {
   switch(action.type) {
-    case 'ADD_DATAPLAN':
-      return Object.assign({}, state, {
-        totalDataplans: state.totalDataplans + 1
-      });
     default:
       return state;
   }

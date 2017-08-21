@@ -1,4 +1,6 @@
 import { dataplans } from './dataplans';
+import { datagenListSetSort } from 'plugins/datagenreact/store/actions';
+import { handleActions } from 'redux-actions';
 
 const defaultState = {
   sortField: 'indexName',
@@ -6,26 +8,24 @@ const defaultState = {
   dataplans: dataplans(undefined, {})
 };
 
-export const datagenList = (state = defaultState, action) => {
-  const { type } = action;
+export const datagenList = handleActions({
+  [datagenListSetSort](state, action) {
+    const { field: sortField } = action.payload;
+    const sortReverse = (sortField === state.sortField)
+      ? !state.sortReverse
+      : false;
 
-  switch(type) {
-    case 'DATAGEN_LIST_SET_SORT':
-      const { field: sortField } = action;
-      const sortReverse = (sortField === state.sortField)
-        ? !state.sortReverse
-        : false;
-
-      return {
-        ...state,
-        sortField,
-        sortReverse,
-        dataplans: dataplans(state.dataplans, {
-          ...action,
+    return {
+      ...state,
+      sortField,
+      sortReverse,
+      dataplans: dataplans(state.dataplans, {
+        type: action.type,
+        payload: {
+          ...action.payload,
           sortReverse
-        })
-      };
-    default:
-      return state;
+        }
+      })
+    };
   }
-};
+}, defaultState);
