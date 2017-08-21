@@ -1,10 +1,10 @@
 import { createAction } from 'redux-actions';
 
 export const dataplansSetSort = createAction('DATAPLANS_SET_SORT',
-  (sortField, sortDirection) => {
+  (sortField, sortReverse) => {
     return {
       sortField,
-      sortDirection
+      sortReverse
     }
   }
 );
