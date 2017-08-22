@@ -1,8 +1,12 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { KuiViewContent } from 'plugins/datagenreact/components';
+import {
+  KuiViewContent,
+  KuiToolbarFooter
+} from 'plugins/datagenreact/components';
 import { DatagenTable } from '../datagen_table';
+import { Footer } from '../footer';
 import { DatagenTableToolbar } from '../datagen_table_toolbar';
 
 export class DatagenList extends React.Component {
@@ -21,6 +25,7 @@ export class DatagenList extends React.Component {
         <div className="kuiViewContentItem kuiControlledTable kuiVerticalRhythm">
           <DatagenTableToolbar />
           <DatagenTable />
+          <Footer />
         </div>
       </KuiViewContent>
     );

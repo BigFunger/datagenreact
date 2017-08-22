@@ -17,7 +17,9 @@ const defaultState = {
   loading: false,
   error: null,
   pageSize: 5,
-  pageNumber: 1
+  pageNumber: 1,
+  startItem: 1,
+  endItem: 5
 };
 
 export const datagenList = handleActions({

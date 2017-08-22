@@ -20,7 +20,6 @@ const applyPagerFilter = (state, pageSize, pageNumber) => {
 
 export const filteredDataplans = handleActions({
   [datagenListApplyFilters](state, action) {
-    console.log('filteredDataplans handling [datagenListApplyFilters]', action);
     const {
       dataplans,
       sortField,
