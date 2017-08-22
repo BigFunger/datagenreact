@@ -6,6 +6,11 @@ import { DatagenTable } from '../datagen_table';
 import { DatagenTableToolbar } from '../datagen_table_toolbar';
 
 export class DatagenList extends React.Component {
+  componentWillMount = () => {
+    const { onRefresh } = this.props;
+    onRefresh();
+  }
+
   render = () => {
     const {
       dataplans

@@ -33,22 +33,22 @@ export class DatagenTable extends React.Component {
                 </td>
                 <td className="kuiTableRowCell">
                   <div className="kuiTableRowCell__liner">
-                  <span>{dataplan.indexName}</span>
+                  <span>{dataplan.definition.indexName}</span>
                   </div>
                 </td>
                 <td className="kuiTableRowCell">
                   <div className="kuiTableRowCell__liner">
-                    <span>{dataplan.typeName}</span>
+                    <span>{dataplan.definition.typeName}</span>
                   </div>
                 </td>
                 <td className="kuiTableRowCell">
                   <div className="kuiTableRowCell__liner">
-                    <span>{dataplan.dateCreated}</span>
+                    <span>{dataplan.definition.dateCreated}</span>
                   </div>
                 </td>
                 <td className="kuiTableRowCell">
                   <div className="kuiTableRowCell__liner">
-                    <span>{dataplan.dateCreated}</span>
+                    <span>{dataplan.definition.dateCreated}</span>
                   </div>
                 </td>
               </KuiTableRow>

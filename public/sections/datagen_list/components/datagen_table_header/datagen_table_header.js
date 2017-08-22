@@ -24,10 +24,10 @@ export class DatagenTableHeader extends React.Component {
 
     const columns = [
       { field: 'id', label: 'Id' },
-      { field: 'indexName', label: 'Index Name' },
-      { field: 'typeName', label: 'Type Name' },
-      { field: 'dateCreated', label: 'Date created' },
-      { field: 'dateLastRun', label: 'Date last run' }
+      { field: 'definition.indexName', label: 'Index Name' },
+      { field: 'definition.typeName', label: 'Type Name' },
+      { field: 'definition.dateCreated', label: 'Date created' },
+      { field: 'definition.dateLastRun', label: 'Date last run' }
     ].map(column => (
       <SortableColumn
         key={column.field}

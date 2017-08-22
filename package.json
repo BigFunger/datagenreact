@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "angular-sanitize": "1.4.9",
+    "axios": "^0.16.2",
+    "boom": "^5.2.0",
     "duration-parser": "1.0.2",
     "elasticsearch": "11.0.1",
     "gaussian": "1.1.0",

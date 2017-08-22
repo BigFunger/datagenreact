@@ -39,4 +39,9 @@ export function DatagenProvider($http, $q, Private) {
     });
   };
 
+  this.getDataplanList = () => {
+    return this.$http.get(`${apiPrefix}/dataplans`)
+    .then(response => response.data.dataplans);
+  }
+
 }

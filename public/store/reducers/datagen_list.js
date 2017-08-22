@@ -2,13 +2,18 @@ import { handleActions } from 'redux-actions';
 import { dataplans } from './dataplans';
 import {
   datagenListSetSort,
-  datagenListApplyFilters
+  datagenListApplyFilters,
+  datagenFetchDataplans,
+  datagenFetchDataplansSuccess,
+  datagenFetchDataplansError
 } from 'plugins/datagenreact/store/actions';
 
 const defaultState = {
   sortField: 'indexName',
   sortReverse: true,
-  dataplans: dataplans(undefined, {})
+  dataplans: dataplans(undefined, {}),
+  loading: false,
+  error: null
 };
 
 export const datagenList = handleActions({
@@ -21,14 +26,37 @@ export const datagenList = handleActions({
     return {
       ...state,
       sortField,
-      sortReverse,
-      dataplans: dataplans(state.dataplans, action)
+      sortReverse
     };
   },
   [datagenListApplyFilters](state, action) {
     return {
       ...state,
       dataplans: dataplans(state.dataplans, action)
+    };
+  },
+  [datagenFetchDataplans](state, action) {
+    const { dataplans } = action.payload;
+    return {
+      ...state,
+      loading: true
+    };
+  },
+  [datagenFetchDataplansSuccess](state, action) {
+    const { dataplans } = action.payload;
+    return {
+      ...state,
+      dataplans,
+      error: null,
+      loading: false
+    };
+  },
+  [datagenFetchDataplansError](state, action) {
+    const { error } = action.payload;
+    return {
+      ...state,
+      error,
+      loading: false
     };
   }
 }, defaultState);
