@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import {
   KuiToolbarFooter,
   KuiToolbarFooterSection,
-  KuiToolbarFooterText,
-  KuiPager
+  KuiToolbarFooterText
 } from 'plugins/datagenreact/components';
 import { KuiPagerText } from '../pager_text';
+import { KuiPager } from '../pager';
 
 export class Footer extends React.Component {
   render = () => {

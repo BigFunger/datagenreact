@@ -6,8 +6,11 @@ import {
   datagenListApplyFilters,
   datagenFetchDataplans,
   datagenFetchDataplansSuccess,
-  datagenFetchDataplansError
+  datagenFetchDataplansError,
+  datagenListNextPage,
+  datagenListPreviousPage
 } from 'plugins/datagenreact/store/actions';
+import { Pager } from 'ui/pager/pager';
 
 const defaultState = {
   sortField: 'indexName',
@@ -19,7 +22,8 @@ const defaultState = {
   pageSize: 5,
   pageNumber: 1,
   startItem: 1,
-  endItem: 5
+  endItem: 5,
+  pageStartIndex: 0
 };
 
 export const datagenList = handleActions({
@@ -61,6 +65,40 @@ export const datagenList = handleActions({
       ...state,
       error,
       loading: false
+    };
+  },
+  [datagenListNextPage](state, action) {
+    const { 
+      dataplans,
+      pageSize,
+      pageNumber
+    } = state;
+
+    const pager = new Pager(dataplans.length, pageSize, pageNumber);
+
+    return {
+      ...state,
+      pageStartIndex: pager.startIndex,
+      pageNumber: state.pageNumber + 1,
+      startItem: pager.startItem,
+      endItem: pager.endItem,
+    };
+  },
+  [datagenListPreviousPage](state, action) {
+    const { 
+      dataplans,
+      pageSize,
+      pageNumber
+    } = state;
+
+    const pager = new Pager(dataplans.length, pageSize, pageNumber);
+
+    return {
+      ...state,
+      pageStartIndex: pager.startIndex,
+      pageNumber: state.pageNumber - 1,
+      startItem: pager.startItem,
+      endItem: pager.endItem,
     };
   }
 }, defaultState);

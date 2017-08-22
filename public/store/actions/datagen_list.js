@@ -4,14 +4,21 @@ import { createThunk } from 'redux-thunks';
 import { newService } from 'plugins/datagenreact/services/new_service';
 
 const dataplansApplyFilters = (dispatch, getState) => {
-  const filters = pick(getState().datagenList, [
-    'dataplans',
-    'sortField',
-    'sortReverse',
-    'pageSize',
-    'pageNumber'
-  ]);
-  dispatch(datagenListApplyFilters(filters));
+  const {
+    dataplans,
+    sortField,
+    sortReverse,
+    pageStartIndex,
+    pageSize
+  } = getState().datagenList;
+
+  dispatch(datagenListApplyFilters({
+    dataplans,
+    sortField,
+    sortReverse,
+    pageStartIndex,
+    pageSize
+  }));
 }
 
 export const datagenListApplyFilters = createAction('DATAGEN_LIST_APPLY_FILTERS');
@@ -42,5 +49,21 @@ export const datagenFetchDataplans = createThunk('DATAGEN_FETCH_DATAPLANS',
       .catch(error => {
         dispatch(datagenFetchDataplansError(error));
       });
+  }
+);
+
+export const datagenListNextPage = createThunk('DATAGEN_LIST_NEXT_PAGE',
+  ({ dispatch, getState, type }) => {
+    dispatch(createAction(type)());
+
+    dataplansApplyFilters(dispatch, getState);
+  }
+);
+
+export const datagenListPreviousPage = createThunk('DATAGEN_LIST_PREVIOUS_PAGE',
+  ({ dispatch, getState, type }) => {
+    dispatch(createAction(type)());
+
+    dataplansApplyFilters(dispatch, getState);
   }
 );

@@ -5,5 +5,7 @@ export {
   datagenListInit,
   datagenFetchDataplans,
   datagenFetchDataplansSuccess,
-  datagenFetchDataplansError
+  datagenFetchDataplansError,
+  datagenListNextPage,
+  datagenListPreviousPage
 } from './datagen_list';

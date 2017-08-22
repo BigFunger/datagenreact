@@ -1,7 +1,6 @@
 import { sortByOrder } from 'lodash';
 import { datagenListApplyFilters } from 'plugins/datagenreact/store/actions';
 import { handleActions } from 'redux-actions';
-import { Pager } from 'ui/pager/pager';
 
 const defaultState = [];
 
@@ -11,11 +10,8 @@ const applySortFilter = (state, sortField, sortReverse) => {
   return sortByOrder(state, [sortField], [direction]);
 }
 
-const applyPagerFilter = (state, pageSize, pageNumber) => {
-  const pager = new Pager(state.length, pageSize, pageNumber);
-  const startIndex = pager.startIndex;
-
-  return state.slice(startIndex, pageSize);
+const applyPagerFilter = (state, pageStartIndex, pageSize) => {
+  return state.slice(pageStartIndex, pageStartIndex + pageSize);
 }
 
 export const filteredDataplans = handleActions({
@@ -24,12 +20,12 @@ export const filteredDataplans = handleActions({
       dataplans,
       sortField,
       sortReverse,
-      pageNumber,
+      pageStartIndex,
       pageSize
     } = action.payload;
 
     const sorted = applySortFilter(dataplans, sortField, sortReverse);
-    const paged = applyPagerFilter(sorted, pageSize, pageNumber);
+    const paged = applyPagerFilter(sorted, pageStartIndex, pageSize);
 
     return paged;
   }
