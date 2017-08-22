@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
 import { dataplans } from './dataplans';
+import { filteredDataplans } from './filtered_dataplans';
 import {
   datagenListSetSort,
   datagenListApplyFilters,
@@ -12,8 +13,11 @@ const defaultState = {
   sortField: 'indexName',
   sortReverse: true,
   dataplans: dataplans(undefined, {}),
+  filteredDataplans: filteredDataplans(undefined, {}),
   loading: false,
-  error: null
+  error: null,
+  pageSize: 5,
+  pageNumber: 1
 };
 
 export const datagenList = handleActions({
@@ -32,21 +36,19 @@ export const datagenList = handleActions({
   [datagenListApplyFilters](state, action) {
     return {
       ...state,
-      dataplans: dataplans(state.dataplans, action)
+      filteredDataplans: filteredDataplans(state.filteredDataplans, action)
     };
   },
   [datagenFetchDataplans](state, action) {
-    const { dataplans } = action.payload;
     return {
       ...state,
       loading: true
     };
   },
   [datagenFetchDataplansSuccess](state, action) {
-    const { dataplans } = action.payload;
     return {
       ...state,
-      dataplans,
+      dataplans: dataplans(state.dataplans, action),
       error: null,
       loading: false
     };

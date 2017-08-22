@@ -10,7 +10,7 @@ import { DatagenTableHeader } from '../datagen_table_header';
 export class DatagenTable extends React.Component {
   render = () => {
     const {
-      dataplans
+      filteredDataplans
     } = this.props;
 
     return (
@@ -18,7 +18,7 @@ export class DatagenTable extends React.Component {
         <DatagenTableHeader />
       
         <tbody>
-          {dataplans.map(dataplan  => {
+          {filteredDataplans.map(dataplan  => {
             return (
               <KuiTableRow key={dataplan.id}>
                 <td className="kuiTableRowCell kuiTableRowCell--checkBox">
@@ -60,6 +60,6 @@ export class DatagenTable extends React.Component {
   }
 
   static propTypes = {
-    dataplans: PropTypes.array
+    filteredDataplans: PropTypes.array
   }
 }
