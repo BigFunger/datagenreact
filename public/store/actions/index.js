@@ -6,6 +6,5 @@ export {
   datagenFetchDataplans,
   datagenFetchDataplansSuccess,
   datagenFetchDataplansError,
-  datagenListNextPage,
-  datagenListPreviousPage
+  datagenListSetPage
 } from './datagen_list';

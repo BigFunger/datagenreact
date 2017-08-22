@@ -7,8 +7,7 @@ import {
   datagenFetchDataplans,
   datagenFetchDataplansSuccess,
   datagenFetchDataplansError,
-  datagenListNextPage,
-  datagenListPreviousPage
+  datagenListSetPage
 } from 'plugins/datagenreact/store/actions';
 import { Pager } from 'ui/pager/pager';
 
@@ -67,36 +66,19 @@ export const datagenList = handleActions({
       loading: false
     };
   },
-  [datagenListNextPage](state, action) {
+  [datagenListSetPage](state, action) {
+    const { pageNumber } = action.payload;
     const { 
       dataplans,
-      pageSize,
-      pageNumber
+      pageSize
     } = state;
 
     const pager = new Pager(dataplans.length, pageSize, pageNumber);
 
     return {
       ...state,
+      pageNumber,
       pageStartIndex: pager.startIndex,
-      pageNumber: state.pageNumber + 1,
-      startItem: pager.startItem,
-      endItem: pager.endItem,
-    };
-  },
-  [datagenListPreviousPage](state, action) {
-    const { 
-      dataplans,
-      pageSize,
-      pageNumber
-    } = state;
-
-    const pager = new Pager(dataplans.length, pageSize, pageNumber);
-
-    return {
-      ...state,
-      pageStartIndex: pager.startIndex,
-      pageNumber: state.pageNumber - 1,
       startItem: pager.startItem,
       endItem: pager.endItem,
     };

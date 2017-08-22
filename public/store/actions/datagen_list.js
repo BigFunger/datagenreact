@@ -52,17 +52,9 @@ export const datagenFetchDataplans = createThunk('DATAGEN_FETCH_DATAPLANS',
   }
 );
 
-export const datagenListNextPage = createThunk('DATAGEN_LIST_NEXT_PAGE',
-  ({ dispatch, getState, type }) => {
-    dispatch(createAction(type)());
-
-    dataplansApplyFilters(dispatch, getState);
-  }
-);
-
-export const datagenListPreviousPage = createThunk('DATAGEN_LIST_PREVIOUS_PAGE',
-  ({ dispatch, getState, type }) => {
-    dispatch(createAction(type)());
+export const datagenListSetPage = createThunk('DATAGEN_LIST_SET_PAGE',
+  ({ dispatch, getState, type }, { pageNumber }) => {
+    dispatch(createAction(type)({ pageNumber }));
 
     dataplansApplyFilters(dispatch, getState);
   }
