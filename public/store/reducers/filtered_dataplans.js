@@ -1,5 +1,5 @@
 import { sortByOrder } from 'lodash';
-import { datagenListApplyFilters } from 'plugins/datagenreact/store/actions';
+import { datagenListApplyFilters } from 'plugins/datagenreact/store/actions/datagen_list';
 import { handleActions } from 'redux-actions';
 
 const defaultState = [];

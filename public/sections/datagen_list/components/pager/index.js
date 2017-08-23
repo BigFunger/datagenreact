@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { KuiPager as PresentationComponent } from 'plugins/datagenreact/components';
-import { datagenListSetPage } from 'plugins/datagenreact/store/actions';
+import { datagenListSetPage } from 'plugins/datagenreact/store/actions/datagen_list';
 
 const mapStateToProps = (state) => {
   const {
@@ -10,8 +10,8 @@ const mapStateToProps = (state) => {
   } = state.datagenList;
 
   const totalPages = Math.ceil(dataplans.length / pageSize);
-  const nextDisabled = pageNumber < totalPages;
-  const prevDisabled = pageNumber > 0;
+  const nextDisabled = pageNumber >= totalPages;
+  const prevDisabled = pageNumber <= 1;
 
   return {
     nextDisabled,

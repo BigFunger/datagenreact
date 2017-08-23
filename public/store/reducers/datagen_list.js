@@ -8,7 +8,7 @@ import {
   datagenFetchDataplansSuccess,
   datagenFetchDataplansError,
   datagenListSetPage
-} from 'plugins/datagenreact/store/actions';
+} from 'plugins/datagenreact/store/actions/datagen_list';
 import { Pager } from 'ui/pager/pager';
 
 const defaultState = {

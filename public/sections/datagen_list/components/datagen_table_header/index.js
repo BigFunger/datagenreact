@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { DatagenTableHeader as PresentationComponent } from './datagen_table_header';
-import { datagenListSetSort } from 'plugins/datagenreact/store/actions';
+import { datagenListSetSort } from 'plugins/datagenreact/store/actions/datagen_list';
 
 const mapStateToProps = (state) => {
   const { 

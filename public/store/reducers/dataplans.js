@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { datagenFetchDataplansSuccess } from 'plugins/datagenreact/store/actions';
+import { datagenFetchDataplansSuccess } from 'plugins/datagenreact/store/actions/datagen_list';
 
 const defaultState = [];
 

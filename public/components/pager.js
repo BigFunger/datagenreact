@@ -17,6 +17,7 @@ export class KuiPager extends React.Component {
             className="kuiButton kuiButton--basic kuiButton--iconText"
             aria-label="Show previous page"
             onClick={() => { onPreviousPage() }}
+            disabled={ prevDisabled }
           >
             <span className="kuiButton__inner">
               <span
@@ -30,6 +31,7 @@ export class KuiPager extends React.Component {
             aria-label="Show next page"
             data-test-subj="pagerNextButton"
             onClick={() => { onNextPage() }}
+            disabled={ nextDisabled }
           >
             <span className="kuiButton__inner">
               <span
@@ -44,6 +46,8 @@ export class KuiPager extends React.Component {
   }
   
   static propTypes = {
+    nextDisabled: PropTypes.bool,
+    prevDisabled: PropTypes.bool,
     onPreviousPage: PropTypes.func,
     onNextPage: PropTypes.func
   }
