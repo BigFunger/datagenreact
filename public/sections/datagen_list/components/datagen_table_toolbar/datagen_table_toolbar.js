@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import { KuiPagerText } from '../pager_text';
+import { KuiPager } from '../pager';
 
 export class DatagenTableToolbar extends React.Component {
   render = () => {
@@ -23,17 +25,8 @@ export class DatagenTableToolbar extends React.Component {
         </div>
 
         <div className="kuiToolBarSection">
-          {/* <tool-bar-pager-text
-            start-item="watchList.pager.startItem"
-            end-item="watchList.pager.endItem"
-            total-items="watchList.pager.totalItems"
-          ></tool-bar-pager-text>
-          <tool-bar-pager-buttons
-            has-previous-page="watchList.pager.hasPreviousPage"
-            has-next-page="watchList.pager.hasNextPage"
-            on-page-next="watchList.onPageNext"
-            on-page-previous="watchList.onPagePrevious"
-          ></tool-bar-pager-buttons> */}
+          <KuiPagerText />
+          <KuiPager />
         </div>
       </div>
     );
