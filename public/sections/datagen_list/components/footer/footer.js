@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  KuiToolbarFooter,
-  KuiToolbarFooterSection,
-  KuiToolbarFooterText
-} from 'plugins/datagenreact/components';
+import { KuiToolbarFooter } from '../../../../components/toolbar_footer';
+import { KuiToolbarFooterSection } from '../../../../components/toolbar_footer_section';
+import { KuiToolbarFooterText } from '../../../../components/toolbar_footer_text';
 import { KuiPagerText } from '../pager_text';
 import { KuiPager } from '../pager';
 

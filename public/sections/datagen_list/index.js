@@ -1,1 +1,1 @@
-import './datagen_list_route';
+import './register_route';

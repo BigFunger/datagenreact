@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { KuiPagerText as PresentationComponent } from 'plugins/datagenreact/components';
+import { KuiPagerText as PresentationComponent } from '../../../../components/pager_text';
 
 const mapStateToProps = (state) => {
   const {

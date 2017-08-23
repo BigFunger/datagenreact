@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { KuiPager as PresentationComponent } from 'plugins/datagenreact/components';
+import { KuiPager as PresentationComponent } from '../../../../components/pager';
 import { datagenListSetPage } from 'plugins/datagenreact/store/actions/datagen_list';
 
 const mapStateToProps = (state) => {

@@ -1,10 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import {
-  KuiViewContent,
-  KuiToolbarFooter
-} from 'plugins/datagenreact/components';
+import { KuiViewContent } from '../../../../components/view_content';
 import { DatagenTable } from '../datagen_table';
 import { Footer } from '../footer';
 import { DatagenTableToolbar } from '../datagen_table_toolbar';

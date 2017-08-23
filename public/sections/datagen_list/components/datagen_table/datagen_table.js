@@ -1,10 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import {
-  KuiTable,
-  KuiTableRow
-} from 'plugins/datagenreact/components';
+import { KuiTable } from '../../../../components/table';
+import { KuiTableRow } from '../../../../components/table_row';
 import { DatagenTableHeader } from '../datagen_table_header';
 
 export class DatagenTable extends React.Component {

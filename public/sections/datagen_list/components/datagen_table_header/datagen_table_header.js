@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  KuiThead,
-  KuiTheadRow,
-  SortableColumn
-} from 'plugins/datagenreact/components';
+import { KuiThead } from '../../../../components/thead';
+import { KuiTheadRow } from '../../../../components/thead_row';
+import { SortableColumn } from '../../../../components/sortable_column';
 
 export class DatagenTableHeader extends React.Component {
   getChildContext() {
