@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import { KuiViewContent } from '../../../../components/view_content';
 import { DatagenTable } from '../datagen_table';
@@ -13,10 +12,6 @@ export class DatagenList extends React.Component {
   }
 
   render = () => {
-    const {
-      dataplans
-    } = this.props;
-
     return (
       <KuiViewContent>
         <div className="kuiViewContentItem kuiControlledTable kuiVerticalRhythm">
@@ -29,6 +24,6 @@ export class DatagenList extends React.Component {
   }
 
   static propTypes = {
-    dataplans: PropTypes.array
+    onRefresh: PropTypes.func
   }
 }
