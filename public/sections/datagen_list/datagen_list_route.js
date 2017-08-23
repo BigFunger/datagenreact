@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { DatagenList } from './components/datagen_list';
 import { Provider } from 'react-redux';
-import { store } from 'plugins/datagenreact/store';
+import { store } from '../../store';
 
 routes
 .when('/management/elasticsearch/datagenreact/', {
