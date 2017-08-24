@@ -5,12 +5,16 @@ import { newService } from 'plugins/datagenreact/services/new_service';
 
 const dataplansApplyFilters = (dispatch, getState) => {
   const {
-    dataplans,
-    sortField,
-    sortReverse,
-    pageStartIndex,
-    pageSize
-  } = getState().datagenList;
+    datagenList: {
+      dataplans,
+      table: {
+        sortField,
+        sortReverse,
+        pageStartIndex,
+        pageSize
+      }
+    }
+  } = getState();
 
   dispatch(datagenListApplyFilters({
     dataplans,
@@ -54,7 +58,8 @@ export const datagenFetchDataplans = createThunk('DATAGEN_FETCH_DATAPLANS',
 
 export const datagenListSetPage = createThunk('DATAGEN_LIST_SET_PAGE',
   ({ dispatch, getState, type }, { pageNumber }) => {
-    dispatch(createAction(type)({ pageNumber }));
+    const { datagenList: { dataplans } } = getState();
+    dispatch(createAction(type)({ pageNumber, dataplans }));
 
     dataplansApplyFilters(dispatch, getState);
   }

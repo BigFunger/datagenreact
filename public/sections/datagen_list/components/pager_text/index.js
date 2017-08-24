@@ -3,10 +3,14 @@ import { KuiPagerText as PresentationComponent } from '../../../../components/pa
 
 const mapStateToProps = (state) => {
   const {
-    startItem,
-    endItem,
-    dataplans
-  } = state.datagenList;
+    datagenList: {
+      dataplans,
+      table: {
+        startItem,
+        endItem
+      }
+    }
+  } = state;
 
   const totalItems = dataplans.length;
 

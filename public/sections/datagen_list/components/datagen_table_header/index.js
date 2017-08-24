@@ -3,10 +3,14 @@ import { DatagenTableHeader as PresentationComponent } from './datagen_table_hea
 import { datagenListSetSort } from 'plugins/datagenreact/store/actions/datagen_list';
 
 const mapStateToProps = (state) => {
-  const { 
-    sortField,
-    sortReverse
-  } = state.datagenList;
+  const {
+    datagenList: {
+      table: {
+        sortField,
+        sortReverse
+      }
+    }
+  } = state;
 
   return {
     sortField,

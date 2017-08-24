@@ -2,7 +2,11 @@ import { connect } from 'react-redux';
 import { DatagenTable as PresentationComponent } from './datagen_table';
 
 const mapStateToProps = (state) => {
-  const { filteredDataplans } = state.datagenList;
+  const { 
+    datagenList: {
+      filteredDataplans
+    }
+  } = state;
 
   return {
     filteredDataplans

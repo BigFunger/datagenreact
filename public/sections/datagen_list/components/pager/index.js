@@ -4,10 +4,14 @@ import { datagenListSetPage } from 'plugins/datagenreact/store/actions/datagen_l
 
 const mapStateToProps = (state) => {
   const {
-    dataplans,
-    pageSize,
-    pageNumber
-  } = state.datagenList;
+    datagenList: {
+      dataplans,
+      table: {
+        pageSize,
+        pageNumber
+      }
+    }
+  } = state;
 
   const totalPages = Math.ceil(dataplans.length / pageSize);
   const nextDisabled = pageNumber >= totalPages;
