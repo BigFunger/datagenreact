@@ -8,8 +8,6 @@ export const newService = {
   fetchDataplans: () => {
     return fetch.get(`${apiPrefix}/dataplans`)
     .then(response => {
-      console.log(response);
-
       return response.data;
     })
     .catch(error => error)

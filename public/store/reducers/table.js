@@ -2,13 +2,11 @@ import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import {
   datagenListSetSort,
-  datagenListApplyFilters,
   datagenFetchDataplans,
   datagenFetchDataplansSuccess,
   datagenFetchDataplansError,
   datagenListSetPage
-} from 'plugins/datagenreact/store/actions/datagen_list';
-import { Pager } from 'ui/pager/pager';
+} from '../actions/datagen_list';
 
 const defaultState = {
   sortField: 'indexName',
@@ -16,36 +14,40 @@ const defaultState = {
   loading: false,
   error: null,
   pageSize: 5,
-  pageNumber: 1,
-  startItem: 1,
-  endItem: 5,
-  pageStartIndex: 0
+  pageNumber: 0,
+  startItem: 0,
+  endItem: 4,
+  pageStartIndex: 0,
+  requestStart: null,
+  requestEnd: null
 };
 
 export const table = handleActions({
   [datagenListSetSort](state, action) {
-    const { field: sortField } = action.payload;
-    const sortReverse = (sortField === state.sortField)
+    const { field } = action.payload;
+    const sortReverse = (field === state.sortField)
       ? !state.sortReverse
       : false;
 
     return {
       ...state,
-      sortField,
+      sortField: field,
       sortReverse
     };
   },
   [datagenFetchDataplans](state, action) {
     return {
       ...state,
-      loading: true
+      loading: true,
+      requestStart: Date.now()
     };
   },
   [datagenFetchDataplansSuccess](state, action) {
     return {
       ...state,
       error: null,
-      loading: false
+      loading: false,
+      requestEnd: Date.now()
     };
   },
   [datagenFetchDataplansError](state, action) {
@@ -53,26 +55,16 @@ export const table = handleActions({
     return {
       ...state,
       error,
-      loading: false
+      loading: false,
+      requestEnd: Date.now()
     };
   },
   [datagenListSetPage](state, action) {
-    const {
-      pageNumber,
-      dataplans
-    } = action.payload;
-    const { 
-      pageSize
-    } = state;
-
-    const pager = new Pager(dataplans.length, pageSize, pageNumber);
+    const { pageNumber } = action.payload;
 
     return {
       ...state,
-      pageNumber,
-      pageStartIndex: pager.startIndex,
-      startItem: pager.startItem,
-      endItem: pager.endItem,
+      pageNumber
     };
   }
 }, defaultState);

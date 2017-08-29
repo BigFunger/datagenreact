@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { DatagenTable as PresentationComponent } from './datagen_table';
+import { DataplansBody as PresentationComponent } from './dataplans_body';
 
 const mapStateToProps = (state) => {
   const { 
@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 }
 
-export const DatagenTable = connect(
+export const DataplansBody = connect(
   mapStateToProps,
   mapDispatchToProps
 )(PresentationComponent);

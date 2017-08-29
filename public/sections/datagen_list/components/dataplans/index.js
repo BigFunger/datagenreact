@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { DatagenTableToolbar as PresentationComponent } from './datagen_table_toolbar';
+import { Dataplans as PresentationComponent } from './dataplans';
 
 const mapStateToProps = (state) => {
   return {};
@@ -9,7 +9,7 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 }
 
-export const DatagenTableToolbar = connect(
+export const Dataplans = connect(
   mapStateToProps,
   mapDispatchToProps
 )(PresentationComponent);

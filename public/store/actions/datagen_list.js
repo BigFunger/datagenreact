@@ -10,7 +10,7 @@ const dataplansApplyFilters = (dispatch, getState) => {
       table: {
         sortField,
         sortReverse,
-        pageStartIndex,
+        pageNumber,
         pageSize
       }
     }
@@ -20,7 +20,7 @@ const dataplansApplyFilters = (dispatch, getState) => {
     dataplans,
     sortField,
     sortReverse,
-    pageStartIndex,
+    pageNumber,
     pageSize
   }));
 }
@@ -58,9 +58,13 @@ export const datagenFetchDataplans = createThunk('DATAGEN_FETCH_DATAPLANS',
 
 export const datagenListSetPage = createThunk('DATAGEN_LIST_SET_PAGE',
   ({ dispatch, getState, type }, { pageNumber }) => {
-    const { datagenList: { dataplans } } = getState();
-    dispatch(createAction(type)({ pageNumber, dataplans }));
+    dispatch(createAction(type)({ pageNumber }));
 
     dataplansApplyFilters(dispatch, getState);
+
+    // const { datagenList: { dataplans } } = getState();
+    // dispatch(createAction(type)({ pageNumber, dataplans }));
+
+    // dataplansApplyFilters(dispatch, getState);
   }
 );

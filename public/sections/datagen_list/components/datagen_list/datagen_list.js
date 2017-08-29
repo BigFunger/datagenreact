@@ -1,9 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { KuiViewContent } from '../../../../components/view_content';
-import { DatagenTable } from '../datagen_table';
+import { Dataplans } from '../dataplans';
+import { ActionButtons } from '../action_buttons';
 import { Footer } from '../footer';
-import { DatagenTableToolbar } from '../datagen_table_toolbar';
+
+import {
+  KuiPage,
+  KuiPageHeader,
+  KuiPageHeaderSection,
+  KuiTitle,
+  KuiPageBody,
+  KuiPageContent
+} from 'ui_framework/components';
 
 export class DatagenList extends React.Component {
   componentWillMount = () => {
@@ -15,13 +23,24 @@ export class DatagenList extends React.Component {
 
   render = () => {
     return (
-      <KuiViewContent>
-        <div className="kuiViewContentItem kuiControlledTable kuiVerticalRhythm">
-          <DatagenTableToolbar />
-          <DatagenTable />
-          <Footer />
-        </div>
-      </KuiViewContent>
+      <KuiPage>
+        <KuiPageHeader>
+          <KuiPageHeaderSection>
+            <KuiTitle size="large">
+              <h1>Data plans</h1>
+            </KuiTitle>
+          </KuiPageHeaderSection>
+          <KuiPageHeaderSection>
+            <ActionButtons />
+          </KuiPageHeaderSection>
+        </KuiPageHeader>
+        <KuiPageBody>
+          <KuiPageContent>
+            <Dataplans />
+            <Footer />
+          </KuiPageContent>
+        </KuiPageBody>
+      </KuiPage>
     );
   }
 

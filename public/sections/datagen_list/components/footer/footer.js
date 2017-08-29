@@ -1,25 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { KuiToolbarFooter } from '../../../../components/toolbar_footer';
-import { KuiToolbarFooterSection } from '../../../../components/toolbar_footer_section';
-import { KuiToolbarFooterText } from '../../../../components/toolbar_footer_text';
-import { KuiPagerText } from '../pager_text';
-import { KuiPager } from '../pager';
+import {
+  KuiFlexGroup,
+  KuiFlexItem,
+  KuiText,
+  KuiPagination
+} from 'ui_framework/components';
 
 export class Footer extends React.Component {
   render = () => {
+    const {
+      totalRecords,
+      pageNumber,
+      totalPages,
+      requestDuration,
+      goToPage
+    } = this.props;
+
     return (
-      <KuiToolbarFooter>
-        <KuiToolbarFooterSection>
-          <KuiToolbarFooterText>5 Items selected</KuiToolbarFooterText>
-        </KuiToolbarFooterSection>
-        <KuiToolbarFooterSection>
-          <KuiToolbarFooterText>
-            <KuiPagerText />
-          </KuiToolbarFooterText>
-          <KuiPager />
-        </KuiToolbarFooterSection>
-      </KuiToolbarFooter>
+      <KuiFlexGroup
+        justifyContent="spaceBetween"
+        alignItems="center"
+      >
+        <KuiFlexItem grow={false}>
+          <KuiText size="small"><p>{totalRecords} results, returned in {requestDuration} ms.</p></KuiText>
+        </KuiFlexItem>
+        <KuiFlexItem grow={false}>
+          <KuiPagination
+            pageCount={totalPages}
+            activePage={pageNumber}
+            onPageClick={goToPage}
+          />
+        </KuiFlexItem>
+      </KuiFlexGroup>
     )
+  }
+  
+  static propTypes = {
+    totalRecords: PropTypes.number,
+    pageNumber: PropTypes.number,
+    totalPages: PropTypes.number,
+    requestDuration: PropTypes.string,
+    goToPage: PropTypes.func
   }
 }
