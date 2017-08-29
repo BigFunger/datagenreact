@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { SortableColumns as PresentationComponent } from './sortable_columns';
+import { PageSidebar as PresentationComponent } from './page_sidebar';
 
 const mapStateToProps = (state) => {
   return {};
@@ -9,7 +9,7 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 }
 
-export const SortableColumns = connect(
+export const PageSidebar = connect(
   mapStateToProps,
   mapDispatchToProps
 )(PresentationComponent);

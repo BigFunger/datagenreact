@@ -6,12 +6,10 @@ export class SortableColumn extends React.Component {
     const {
       children,
       field,
+      sortField,
+      sortReverse,
       onClick
     } = this.props;
-    const {
-      sortField,
-      sortReverse
-    } = this.context;
 
     const arrowClass = sortReverse ? 'fa-long-arrow-down' : 'fa-long-arrow-up';
     const sortClasses = `kuiTableSortIcon kuiIcon ${arrowClass}`;
@@ -33,10 +31,7 @@ export class SortableColumn extends React.Component {
 
   static propTypes = {
     field: PropTypes.string,
-    onClick: PropTypes.func
-  }
-
-  static contextTypes = {
+    onClick: PropTypes.func,
     sortField: PropTypes.string,
     sortReverse: PropTypes.bool
   }

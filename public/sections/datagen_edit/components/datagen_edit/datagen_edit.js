@@ -1,15 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { KuiViewContent } from '../../../../components/view_content';
+import {
+  KuiPage,
+  KuiPageBody
+} from 'ui_framework/components';
+import { PageHeader } from '../page_header';
+import { PageSidebar } from '../page_sidebar';
+import { PageContent } from '../page_content';
 
 export class DatagenEdit extends React.Component {
   render = () => {
     const { id } = this.props;
 
     return (
-      <KuiViewContent>
-        <h1>datagen edit { id }</h1>
-      </KuiViewContent>
+      <KuiPage>
+        <PageHeader />
+        <KuiPageBody>
+          <PageSidebar />
+          <PageContent />
+        </KuiPageBody>
+      </KuiPage>
     );
   }
 

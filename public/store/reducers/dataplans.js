@@ -3,6 +3,7 @@ import { datagenFetchDataplansSuccess } from 'plugins/datagenreact/store/actions
 
 const defaultState = [];
 
+// THIS SHOULD BE AN OBJECT, NOT AN ARRAY, DUMBASS.
 export const dataplans = handleActions({
   [datagenFetchDataplansSuccess](state, action) {
     const { dataplans } = action.payload;

@@ -5,20 +5,12 @@ import { KuiTheadRow } from '../../../../components/thead_row';
 import { SortableColumn } from '../../../../components/sortable_column';
 
 export class DatagenTableHeader extends React.Component {
-  getChildContext() {
+  render = () => {
     const {
       sortField,
-      sortReverse
+      sortReverse,
+      onSortChange
     } = this.props;
-
-    return {
-      sortField,
-      sortReverse
-    }
-  }
-
-  render = () => {
-    const { onSortChange } = this.props;
 
     const columns = [
       { field: 'id', label: 'Id' },
@@ -30,6 +22,8 @@ export class DatagenTableHeader extends React.Component {
       <SortableColumn
         key={column.field}
         field={column.field}
+        sortField={sortField}
+        sortReverse={sortReverse}
         onClick={onSortChange}
       >
         {column.label}
@@ -52,10 +46,5 @@ export class DatagenTableHeader extends React.Component {
     sortField: PropTypes.string,
     sortReverse: PropTypes.bool,
     onSortChange: PropTypes.func
-  }
-
-  static childContextTypes = {
-    sortField: PropTypes.string,
-    sortReverse: PropTypes.bool
   }
 }

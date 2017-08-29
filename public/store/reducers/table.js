@@ -55,8 +55,8 @@ export const table = handleActions({
       error,
       loading: false
     };
-  }
-  ,[datagenListSetPage](state, action) {
+  },
+  [datagenListSetPage](state, action) {
     const {
       pageNumber,
       dataplans

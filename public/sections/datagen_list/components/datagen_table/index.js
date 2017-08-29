@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
   } = state;
 
   return {
-    filteredDataplans
+    dataplans: filteredDataplans
   };
 };
 
