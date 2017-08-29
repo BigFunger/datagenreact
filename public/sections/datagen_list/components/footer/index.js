@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
 
   const totalRecords = dataplans.length;
   const totalPages = Math.ceil(totalRecords / pageSize);
-  const requestDuration = moment.duration(moment(requestEnd).diff(moment(requestStart))).asMilliseconds();
+  const requestDuration = moment.duration(moment(requestEnd).diff(moment(requestStart)));
 
   return {
     totalRecords,

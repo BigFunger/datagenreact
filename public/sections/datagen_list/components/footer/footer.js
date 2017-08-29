@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import {
   KuiFlexGroup,
   KuiFlexItem,
@@ -23,7 +24,7 @@ export class Footer extends React.Component {
         alignItems="center"
       >
         <KuiFlexItem grow={false}>
-          <KuiText size="small"><p>{totalRecords} results, returned in {requestDuration} ms.</p></KuiText>
+          <KuiText size="small"><p>{totalRecords} results, returned in {requestDuration.asMilliseconds()} ms.</p></KuiText>
         </KuiFlexItem>
         <KuiFlexItem grow={false}>
           <KuiPagination
@@ -40,7 +41,7 @@ export class Footer extends React.Component {
     totalRecords: PropTypes.number,
     pageNumber: PropTypes.number,
     totalPages: PropTypes.number,
-    requestDuration: PropTypes.string,
+    requestDuration: PropTypes.object, //TODO: Best way to handle this scenario? What belongs where?
     goToPage: PropTypes.func
   }
 }

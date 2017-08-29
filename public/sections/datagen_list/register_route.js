@@ -1,7 +1,7 @@
 import routes from 'ui/routes';
 import React from 'react';
 import { render } from 'react-dom';
-import { DatagenList } from './components/datagen_list';
+import { DatagenList } from './components';
 import { Provider } from 'react-redux';
 import { store } from '../../store';
 

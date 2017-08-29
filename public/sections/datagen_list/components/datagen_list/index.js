@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { DatagenList as PresentationComponent } from './datagen_list';
-import { datagenFetchDataplans } from 'plugins/datagenreact/store/actions/datagen_list';
+import { datagenFetchDataplans } from '../../../../store/actions/datagen_list';
 
 const mapStateToProps = (state) => {
   return {};

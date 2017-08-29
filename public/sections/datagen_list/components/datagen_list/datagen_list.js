@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dataplans } from '../dataplans';
-import { ActionButtons } from '../action_buttons';
-import { Footer } from '../footer';
+import {
+  Dataplans,
+  ActionButtons,
+  Footer
+} from '../../components';
 
 import {
   KuiPage,

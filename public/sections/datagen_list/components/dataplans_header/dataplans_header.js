@@ -84,17 +84,6 @@ export class DataplansHeader extends React.Component {
       );
     });
 
-  //   <KuiTableHeaderCell
-  //   key={column.id}
-  //   align={column.alignment}
-  //   width={column.width}
-  //   onSort={column.isSortable ? () => { this.onSort(column.id) } : undefined}
-  //   isSorted={this.state.sortedColumn === column.id}
-  //   isSortAscending={this.sortableProperties.isAscendingByName(column.id)}
-  // >
-  //   {column.label}
-  // </KuiTableHeaderCell>
-
     return (
       <KuiTableHeader>
         {columnHeaders}
