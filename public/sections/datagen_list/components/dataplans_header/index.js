@@ -5,7 +5,7 @@ import { datagenListSetSort } from '../../../../store/actions/datagen_list';
 const mapStateToProps = (state) => {
   const {
     datagenList: {
-      table: {
+      uiState: {
         sortField,
         sortReverse
       }

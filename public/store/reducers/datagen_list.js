@@ -1,10 +1,19 @@
 import { combineReducers } from 'redux';
 import { dataplans } from './dataplans';
-import { filteredDataplans } from './filtered_dataplans';
-import { table } from './table';
+import * as fromDataplans from './dataplans';
+import { uiState } from './ui_state';
 
 export const datagenList = combineReducers({
   dataplans,
-  filteredDataplans,
-  table
+  uiState
 });
+
+// Selectors
+export const getFilteredDataplans = ({ dataplans, uiState }) =>
+  fromDataplans.getFilteredDataplans(
+    dataplans,
+    uiState.sortField,
+    uiState.sortReverse,
+    uiState.pageSize,
+    uiState.pageNumber
+  );

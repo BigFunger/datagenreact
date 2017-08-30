@@ -22,7 +22,7 @@ const defaultState = {
   requestEnd: null
 };
 
-export const table = handleActions({
+export const uiState = handleActions({
   [datagenListSetSort](state, action) {
     const { field } = action.payload;
     const sortReverse = (field === state.sortField)

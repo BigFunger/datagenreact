@@ -14,7 +14,7 @@ export class DataplansBody extends React.Component {
       dataplans
     } = this.props;
 
-    const tableRows = dataplans.map(dataplan  => {
+    const tableRows = dataplans.map(dataplan => {
       return (
         <KuiTableRow key={dataplan.id}>
           <KuiTableRowCellCheckbox>
@@ -36,7 +36,7 @@ export class DataplansBody extends React.Component {
             {dataplan.definition.dateCreated}
           </KuiTableRowCell>
           <KuiTableRowCell>
-            {dataplan.definition.dateCreated}
+            {dataplan.definition.dateLastRun}
           </KuiTableRowCell>
         </KuiTableRow>
       );

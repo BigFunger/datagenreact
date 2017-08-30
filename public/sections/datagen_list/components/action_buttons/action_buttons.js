@@ -6,12 +6,23 @@ import {
 
 export class ActionButtons extends React.Component {
   render = () => {
+    const {
+      onRefresh
+    } = this.props;
+
     return (
       <div>
+        <KuiButton onClick={onRefresh}>
+          Refresh List
+        </KuiButton>
         <KuiButton>
           New Data plan
         </KuiButton>
       </div>
     )
+  }
+  
+  static propTypes = {
+    onRefresh: PropTypes.func
   }
 }

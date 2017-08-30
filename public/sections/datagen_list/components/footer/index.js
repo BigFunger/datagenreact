@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   const {
     datagenList: {
       dataplans,
-      table: {
+      uiState: {
         pageSize,
         pageNumber,
         requestStart,

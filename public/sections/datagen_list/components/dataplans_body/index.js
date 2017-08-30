@@ -1,16 +1,11 @@
 import { connect } from 'react-redux';
 import { DataplansBody as PresentationComponent } from './dataplans_body';
+import { getFilteredDataplans } from '../../../../store/reducers/datagen_app';
 
 const mapStateToProps = (state) => {
-  const { 
-    datagenList: {
-      filteredDataplans
-    }
-  } = state;
-
   return {
-    dataplans: filteredDataplans
-  };
+    dataplans: getFilteredDataplans(state) || []
+  }
 };
 
 const mapDispatchToProps = (dispatch) => {
