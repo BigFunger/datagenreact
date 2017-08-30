@@ -1,22 +1,42 @@
+import { combineReducers } from 'redux';
 import { sortByOrder } from 'lodash';
 import { handleActions } from 'redux-actions';
 import { Pager } from 'ui/pager/pager';
 import { datagenFetchDataplansSuccess } from 'plugins/datagenreact/store/actions/datagen_list';
 
-const defaultState = [];
-
-export const dataplans = handleActions({
+const byId = handleActions({
   [datagenFetchDataplansSuccess](state, action) {
     const { dataplans } = action.payload;
 
-    return [...dataplans];
-  }}, defaultState);
+    return dataplans.reduce((acc, dataplan) => {
+      acc[dataplan.id] = dataplan;
+      return acc;
+    }, {});
+  }
+}, {});
+
+const allIds =  handleActions({
+  [datagenFetchDataplansSuccess](state, action) {
+    const { dataplans } = action.payload;
+    return dataplans.map(dataplan => dataplan.id);
+  }
+}, []);
+
+export const dataplans = combineReducers({
+  byId,
+  allIds
+});
 
 // Selectors
-export const getFilteredDataplans = (state, sortField, sortReverse, pageSize, pageNumber) => {
-  const direction = sortReverse ? 'desc' : 'asc';
-  const pager = new Pager(state.length, pageSize, pageNumber + 1);
+const getAllDataplans = (state) => {
+  return state.allIds.map(id => state.byId[id]);
+}
 
-  const sorted = sortByOrder(state, [sortField], [direction]);
+export const getFilteredDataplans = (state, sortField, sortReverse, pageSize, pageNumber) => {
+  const allDataplans = getAllDataplans(state);
+  const direction = sortReverse ? 'desc' : 'asc';
+  const pager = new Pager(allDataplans.length, pageSize, pageNumber + 1);
+
+  const sorted = sortByOrder(allDataplans, [sortField], [direction]);
   return sorted.slice(pager.startIndex, pager.startIndex + pageSize);
 };

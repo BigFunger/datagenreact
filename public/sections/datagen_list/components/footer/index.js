@@ -6,7 +6,9 @@ import { datagenListSetPage } from '../../../../store/actions/datagen_list';
 const mapStateToProps = (state) => {
   const {
     datagenList: {
-      dataplans,
+      dataplans: {
+        allIds
+      },
       uiState: {
         pageSize,
         pageNumber,
@@ -16,7 +18,7 @@ const mapStateToProps = (state) => {
     }
   } = state;
 
-  const totalRecords = dataplans.length;
+  const totalRecords = allIds.length;
   const totalPages = Math.ceil(totalRecords / pageSize);
   const requestDuration = moment.duration(moment(requestEnd).diff(moment(requestStart)));
 
