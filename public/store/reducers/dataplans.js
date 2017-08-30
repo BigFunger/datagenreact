@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { sortByOrder } from 'lodash';
 import { handleActions } from 'redux-actions';
 import { Pager } from 'ui/pager/pager';
-import { datagenFetchDataplansSuccess } from 'plugins/datagenreact/store/actions/datagen_list';
+import { datagenFetchDataplansSuccess } from '../actions/datagen_list';
 
 const byId = handleActions({
   [datagenFetchDataplansSuccess](state, action) {
