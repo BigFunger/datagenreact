@@ -12,6 +12,21 @@ import {
 } from 'ui_framework/components';
 
 export class TextDatasourceContentBody extends React.Component {
+  constructor(...args) {
+    super(...args);
+
+    this.state = {
+      txt: 'I am the value'
+    };
+  }
+
+  onFieldChange = (event) => {
+    this.setState({
+      ...this.state,
+      txt: event.target.value
+    });
+  }
+
   render = () => {
     const makeId = createHtmlIdGenerator(['text']);
     const {
@@ -34,7 +49,8 @@ export class TextDatasourceContentBody extends React.Component {
           >
             <KuiFieldText
               name="field"
-              value={field}
+              value={this.state.txt}
+              onChange={this.onFieldChange}
             />
           </KuiFormRow>
           <KuiFormRow

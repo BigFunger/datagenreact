@@ -14,7 +14,7 @@ export class DatagenEdit extends React.Component {
 
     return (
       <KuiPage>
-        <PageHeader />
+        <PageHeader id={id} />
         <KuiPageBody>
           <PageSidebar />
           <PageContent />

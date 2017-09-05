@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { ActionButtons as PresentationComponent } from './action_buttons';
 import { datagenFetchDataplans } from '../../../../store/actions/datagen_list';
+import { kibanaIntegrationUrlChange } from '../../../../store/actions/kibana_integration';
 
 const mapStateToProps = (state) => {
   return {};
@@ -10,6 +11,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onRefresh: (field) => {
       dispatch(datagenFetchDataplans());
+    },
+    onNewDataplan: () => {
+      const url = '/management/elasticsearch/datagenreact/edit/1234';
+      dispatch(kibanaIntegrationUrlChange({ url }));
     }
   };
 }

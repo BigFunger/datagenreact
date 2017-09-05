@@ -3,12 +3,14 @@ import React from 'react';
 import { render } from 'react-dom';
 import { DatagenList } from './components';
 import { Provider } from 'react-redux';
-import { store } from '../../store';
+import { createIntegratedStore } from '../../store';
 
 routes
 .when('/management/elasticsearch/datagenreact/', {
   template: '<div id="datagenReactRoot"></div>',
-  controller: () => {
+  controller: ($injector) => {
+    const store = createIntegratedStore($injector);
+
     render(
       <Provider store={store}>
         <DatagenList />
@@ -17,3 +19,4 @@ routes
     );
   }
 });
+

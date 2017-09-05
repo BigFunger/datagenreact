@@ -7,7 +7,8 @@ import {
 export class ActionButtons extends React.Component {
   render = () => {
     const {
-      onRefresh
+      onRefresh,
+      onNewDataplan
     } = this.props;
 
     return (
@@ -15,7 +16,7 @@ export class ActionButtons extends React.Component {
         <KuiButton onClick={onRefresh}>
           Refresh List
         </KuiButton>
-        <KuiButton>
+        <KuiButton onClick={onNewDataplan}>
           New Data plan
         </KuiButton>
       </div>
@@ -23,6 +24,7 @@ export class ActionButtons extends React.Component {
   }
   
   static propTypes = {
-    onRefresh: PropTypes.func
+    onRefresh: PropTypes.func,
+    onNewDataplan: PropTypes.func
   }
 }
