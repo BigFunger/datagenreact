@@ -8,7 +8,7 @@ export const datagenEdit = combineReducers({
 });
 
 export const getEditDatasource = (state) => {
-  return datagenEdit.getEditDatasource(state.datasources, uiState.currentDatasourceId);
+  return datasources.getEditDatasource(state.datasources, state.uiState.currentDatasourceId);
 }
 
 export const getAllDatasources = (state) => {

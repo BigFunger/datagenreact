@@ -7,7 +7,7 @@ import {
   KuiPageContentHeader,
   KuiPageContentHeaderSection
 } from 'ui_framework/components';
-import { TextDatasourceContentBody } from '../text_datasource_content_body';
+import { Datasource } from '../datasource';
 
 export class PageContent extends React.Component {
   render = () => {
@@ -25,7 +25,9 @@ export class PageContent extends React.Component {
             Content abilities
           </KuiPageContentHeaderSection>
         </KuiPageContentHeader>
-        <TextDatasourceContentBody />
+        <KuiPageContentBody>
+          <Datasource />
+        </KuiPageContentBody>
       </KuiPageContent>
     );
   }

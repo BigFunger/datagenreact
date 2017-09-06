@@ -13,13 +13,13 @@ export class DatasourceList extends React.Component {
       onDatasourceClicked
     } = this.props;
 
-    const listItems = datasources.map((datasource, id) => {
+    const listItems = datasources.map((datasource) => {
       return (
         <KuiSideNavItem
-          key={id}
+          key={datasource.id}
         >
-          <button onClick={() => onDatasourceClicked(id)}>
-            {datasource.type} ({id})
+          <button onClick={() => onDatasourceClicked(datasource.id)}>
+            {datasource.type} ({datasource.id})
           </button>
         </KuiSideNavItem>
       );
