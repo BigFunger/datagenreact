@@ -1,5 +1,7 @@
 import { handleActions } from 'redux-actions';
 
+
+//TODO: Not really a datasource... Only put this here to have something to load.
 const defaultState = {
   id: '',
   field: '',

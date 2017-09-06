@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { dataplans } from './dataplans';
-import * as fromDataplans from './dataplans';
+import { dataplans } from '../dataplans';
+import * as fromDataplans from '../dataplans';
 import { uiState } from './ui_state';
 
 export const datagenList = combineReducers({

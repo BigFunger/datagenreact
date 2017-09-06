@@ -15,7 +15,7 @@ const byId = handleActions({
   }
 }, {});
 
-const allIds =  handleActions({
+const allIds = handleActions({
   [datagenFetchDataplansSuccess](state, action) {
     const { dataplans } = action.payload;
     return dataplans.map(dataplan => dataplan.id);

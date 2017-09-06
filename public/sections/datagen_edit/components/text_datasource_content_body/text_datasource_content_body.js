@@ -16,14 +16,28 @@ export class TextDatasourceContentBody extends React.Component {
     super(...args);
 
     this.state = {
-      txt: 'I am the value'
+      id: '',
+      field: '',
+      method: '',
+      length: '',
+      charset: '',
+      analyzer: '',
+      searchAnalyzer: '',
+      searchQuoteAnalyzer: ''
     };
   }
 
   onFieldChange = (event) => {
     this.setState({
       ...this.state,
-      txt: event.target.value
+      field: event.target.value
+    });
+  }
+  
+  onMethodChange = (event) => {
+    this.setState({
+      ...this.state,
+      method: event.target.value
     });
   }
 
@@ -38,7 +52,7 @@ export class TextDatasourceContentBody extends React.Component {
       analyzer,
       searchAnalyzer,
       searchQuoteAnalyzer
-    } = this.props;
+    } = this.state;
 
     return (
       <KuiPageContentBody>
@@ -49,7 +63,7 @@ export class TextDatasourceContentBody extends React.Component {
           >
             <KuiFieldText
               name="field"
-              value={this.state.txt}
+              value={field}
               onChange={this.onFieldChange}
             />
           </KuiFormRow>
@@ -60,6 +74,7 @@ export class TextDatasourceContentBody extends React.Component {
             <KuiSelect
               name="method"
               value={method}
+              onChange={this.onMethodChange}
               options={[
                 { value: 'random', text: 'Randomly generated' },
                 { value: 'values', text: 'Values' }
@@ -70,7 +85,7 @@ export class TextDatasourceContentBody extends React.Component {
             <KuiFormRow
               id={makeId('values')}
               label="Values"
-              helpText={['Line delimited', 'Equal chance of generating each value']}
+              helpText="Line delimited; equal chance of generating each value"
             >
               <KuiTextArea name="values"/>
             </KuiFormRow>
@@ -118,6 +133,6 @@ export class TextDatasourceContentBody extends React.Component {
   }
 
   static propTypes = {
-    id: PropTypes.string
+    onUpdate: PropTypes.func
   }
 }

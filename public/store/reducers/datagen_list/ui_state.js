@@ -6,7 +6,7 @@ import {
   datagenFetchDataplansSuccess,
   datagenFetchDataplansError,
   datagenListSetPage
-} from '../actions/datagen_list';
+} from '../../actions/datagen_list';
 
 const defaultState = {
   sortField: 'indexName',

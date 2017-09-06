@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {
   KuiPageSideBar
 } from 'ui_framework/components';
+import {
+  DatasourceList
+} from '../../components';
 
 export class PageSidebar extends React.Component {
   render = () => {
@@ -10,7 +13,7 @@ export class PageSidebar extends React.Component {
 
     return (
       <KuiPageSideBar>
-        SideBar nav
+        <DatasourceList />
       </KuiPageSideBar>
     );
   }

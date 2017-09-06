@@ -2,7 +2,17 @@ import { connect } from 'react-redux';
 import { PageContent as PresentationComponent } from './page_content';
 
 const mapStateToProps = (state) => {
-  return {};
+  const {
+    datagenEdit: {
+      uiState: {
+        currentDatasourceId
+      }
+    }
+  } = state;
+  
+  return {
+    id: currentDatasourceId
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

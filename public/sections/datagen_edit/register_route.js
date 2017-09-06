@@ -1,5 +1,6 @@
 import routes from 'ui/routes';
 import React from 'react';
+import './styles.less';
 import { render } from 'react-dom';
 import { DatagenEdit } from './components/datagen_edit';
 import { Provider } from 'react-redux';

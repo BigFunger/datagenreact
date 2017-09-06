@@ -1,4 +1,3 @@
-import { pick } from 'lodash';
 import { createAction } from 'redux-actions';
 import { createThunk } from 'redux-thunks';
 import { newService } from 'plugins/datagenreact/services/new_service';

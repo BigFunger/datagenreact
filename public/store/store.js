@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import { loadState, saveState } from '../lib/local_storage';
 import { throttle } from 'lodash';
 import { kbnUrl } from './middleware/kbn_url';
+import { notifer } from './middleware/notifier';
 
 let store;
 export const createIntegratedStore = ($injector) => {
@@ -17,7 +18,8 @@ export const createIntegratedStore = ($injector) => {
     compose(
       applyMiddleware(
         thunk,
-        kbnUrl($injector)
+        kbnUrl($injector),
+        notifer($injector)
       ), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
   );

@@ -18,7 +18,7 @@ export class PageContent extends React.Component {
         <KuiPageContentHeader>
           <KuiPageContentHeaderSection>
             <KuiTitle>
-              <h2>Content title</h2>
+              <h2>Content title { id }</h2>
             </KuiTitle>
           </KuiPageContentHeaderSection>
           <KuiPageContentHeaderSection>

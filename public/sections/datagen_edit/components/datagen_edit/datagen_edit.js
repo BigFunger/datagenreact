@@ -10,6 +10,8 @@ import { PageContent } from '../page_content';
 
 export class DatagenEdit extends React.Component {
   render = () => {
+    //TODO: Where in the flow does the document get loaded from elasticsearch?
+    //on component will load?
     const { id } = this.props;
 
     return (
