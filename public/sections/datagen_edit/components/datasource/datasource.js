@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createHtmlIdGenerator } from '../../../../lib/html_id_generator';
 import {
-  KuiPageContentBody,
   KuiForm,
   KuiFormRow,
   KuiSelect,
@@ -10,30 +9,38 @@ import {
   KuiFieldNumber,
   KuiFieldText
 } from 'ui_framework/components';
+import { DatasourceText } from '../datasource_text';
 
 export class Datasource extends React.Component {
   onFieldChange = (event) => {
-    this.props.onUpdate({
+    this.props.onChange({
       ...this.props.datasource,
       field: event.target.value
     });
   }
   
   onTypeChange = (event) => {
-    this.props.onUpdate({
+    this.props.onChange({
       ...this.props.datasource,
       type: event.target.value
     });
   }
 
-  render = () => {
-    const makeId = createHtmlIdGenerator(['text']);
+  onDetailChange = (detail) => {
+    this.props.onChange({
+      ...this.props.datasource,
+      detail
+    });
+  }
 
+  render = () => {
+    const makeId = createHtmlIdGenerator(['datasource']);
     const {
       datasource: {
         id,
         field,
-        type
+        type,
+        detail
       }
     } = this.props;
 
@@ -59,12 +66,16 @@ export class Datasource extends React.Component {
             onChange={this.onFieldChange}
           />
         </KuiFormRow>
+        <DatasourceText
+          detail={detail}
+          onChange={this.onDetailChange}
+        ></DatasourceText>
       </KuiForm>
     );
   }
 
   static propTypes = {
     datasource: PropTypes.object,
-    onUpdate: PropTypes.func
+    onChange: PropTypes.func
   }
 }

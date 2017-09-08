@@ -21,22 +21,34 @@ const byId = handleActions({
     'the_id_for_field1': {
       id: 'the_id_for_field1',
       type: 'text',
-      field: 'field1'
+      field: 'field1',
+      detail: {
+        text: 'text value for field 1'
+      }
     },
     'the_id_for_field2': {
       id: 'the_id_for_field2',
       type: 'date',
-      field: 'field2'
+      field: 'field2',
+      detail: {
+        text: 'text value for field 2'
+      }
     },
     'the_id_for_field3': {
       id: 'the_id_for_field3',
       type: 'number',
-      field: 'field3'
+      field: 'field3',
+      detail: {
+        text: 'text value for field 3'
+      }
     },
     'the_id_for_field4': {
       id: 'the_id_for_field4',
       type: 'text',
-      field: 'field4'
+      field: 'field4',
+      detail: {
+        text: 'text value for field 4'
+      }
     }
   }
 );
