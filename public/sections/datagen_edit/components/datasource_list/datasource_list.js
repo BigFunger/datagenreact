@@ -29,7 +29,6 @@ export class DatasourceList extends React.Component {
 
     return (
       <KuiSideNav>
-        <KuiSideNavTitle>Datasources</KuiSideNavTitle>
         {listItems}
       </KuiSideNav>
     );
