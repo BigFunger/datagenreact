@@ -14,11 +14,8 @@ export class PageHeader extends React.Component {
       <KuiPageHeader>
         <KuiPageHeaderSection>
           <KuiTitle size="large">
-            <h1>Page title {id}</h1>
+            <h1>New Data Plan</h1>
           </KuiTitle>
-        </KuiPageHeaderSection>
-        <KuiPageHeaderSection>
-          Page abilities
         </KuiPageHeaderSection>
       </KuiPageHeader>
     );

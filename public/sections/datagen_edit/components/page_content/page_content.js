@@ -5,20 +5,32 @@ import {
   KuiPageContent,
   KuiPageContentBody,
   KuiPageContentHeader,
-  KuiPageContentHeaderSection
+  KuiPageContentHeaderSection,
+  KuiSpacer
 } from 'ui_framework/components';
-import { Datasource } from '../datasource';
+import {
+  Tabs,
+  Dataplan,
+  Datasources
+} from '../../components';
+
+const tabPanels = {
+  'datasources': Datasources,
+  'dataplan': Dataplan
+};
 
 export class PageContent extends React.Component {
   render = () => {
-    const { id } = this.props;
+    const { selectedTabId } = this.props;
+
+    const CurrentContent = tabPanels[selectedTabId];
 
     return (
       <KuiPageContent>
         <KuiPageContentHeader>
           <KuiPageContentHeaderSection>
             <KuiTitle>
-              <h2>Content title { id }</h2>
+              <h2>New Data Plan</h2>
             </KuiTitle>
           </KuiPageContentHeaderSection>
           <KuiPageContentHeaderSection>
@@ -26,13 +38,15 @@ export class PageContent extends React.Component {
           </KuiPageContentHeaderSection>
         </KuiPageContentHeader>
         <KuiPageContentBody>
-          <Datasource />
+          <Tabs />
+          <KuiSpacer size="l" />
+          <CurrentContent />
         </KuiPageContentBody>
       </KuiPageContent>
     );
   }
 
   static propTypes = {
-    id: PropTypes.string
+    selectedTabId: PropTypes.string
   }
 }

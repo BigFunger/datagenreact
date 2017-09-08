@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { PageContent as PresentationComponent } from './page_content';
+import { Tabs as PresentationComponent } from './tabs';
+import { setTab } from '../../../../store/actions/datagen_edit';
 
 const mapStateToProps = (state) => {
   const {
@@ -9,17 +10,21 @@ const mapStateToProps = (state) => {
       }
     }
   } = state;
-  
+
   return {
     selectedTabId
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    onChange: (id) => {
+      dispatch(setTab({ id }));
+    }
+  };
 }
 
-export const PageContent = connect(
+export const Tabs = connect(
   mapStateToProps,
   mapDispatchToProps
 )(PresentationComponent);

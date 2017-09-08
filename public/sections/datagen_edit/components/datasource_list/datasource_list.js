@@ -14,12 +14,14 @@ export class DatasourceList extends React.Component {
     } = this.props;
 
     const listItems = datasources.map((datasource) => {
+      //Instead of KuiSideNavItem components, it should be a component that consumes a single datasource.
+      //Fix when Dave gives you the selectable list component.
       return (
         <KuiSideNavItem
           key={datasource.id}
         >
           <button onClick={() => onDatasourceClicked(datasource.id)}>
-            {datasource.type} ({datasource.id})
+            {datasource.type} ({datasource.field})
           </button>
         </KuiSideNavItem>
       );
