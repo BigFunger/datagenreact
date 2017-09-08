@@ -9,8 +9,11 @@ import {
   KuiFieldNumber,
   KuiFieldText
 } from 'ui_framework/components';
-import { DatasourceText } from '../datasource_text';
-import { DatasourceNumber } from '../datasource_number';
+import {
+  DatasourceText,
+  DatasourceNumber,
+  DatasourceDate
+} from '../../components';
 
 export class Datasource extends React.Component {
   onFieldChange = (event) => {
@@ -37,7 +40,8 @@ export class Datasource extends React.Component {
   renderDetail = (type, detail) => {
     const DetailNodeTypes = {
       'text': DatasourceText,
-      'number': DatasourceNumber
+      'number': DatasourceNumber,
+      'date': DatasourceDate
     };
     const DetailNodeType = DetailNodeTypes[type];
 
