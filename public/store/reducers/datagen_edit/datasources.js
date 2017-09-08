@@ -39,7 +39,7 @@ const byId = handleActions({
       type: 'number',
       field: 'field3',
       detail: {
-        text: 'text value for field 3'
+        length: 10
       }
     },
     'the_id_for_field4': {

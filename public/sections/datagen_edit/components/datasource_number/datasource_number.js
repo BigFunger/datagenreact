@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { createHtmlIdGenerator } from '../../../../lib/html_id_generator';
 import {
   KuiFormRow,
-  KuiFieldText
+  KuiFieldNumber
 } from 'ui_framework/components';
 
-export class DatasourceText extends React.Component {  
-  onTextChange = (event) => {
+export class DatasourceNumber extends React.Component {  
+  onLengthChange = (event) => {
     this.props.onChange({
       ...this.props.detail,
-      text: event.target.value
+      length: event.target.value
     });
   }
 
@@ -18,20 +18,21 @@ export class DatasourceText extends React.Component {
     const makeId = createHtmlIdGenerator(['datasource']);
     const {
       detail: {
-        text
+        length
       }
     } = this.props;
 
     return (
       <div>
         <KuiFormRow
-          id={makeId('text')}
-          label="Text specific field"
+          id={makeId('length')}
+          label="Length"
         >
-          <KuiFieldText
-            name="text"
-            value={text}
-            onChange={this.onTextChange}
+          <KuiFieldNumber
+            name="length"
+            min={1}
+            value={length}
+            onChange={this.onLengthChange}
           />
         </KuiFormRow>
       </div>

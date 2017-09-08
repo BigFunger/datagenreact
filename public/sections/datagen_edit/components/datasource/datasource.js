@@ -10,6 +10,7 @@ import {
   KuiFieldText
 } from 'ui_framework/components';
 import { DatasourceText } from '../datasource_text';
+import { DatasourceNumber } from '../datasource_number';
 
 export class Datasource extends React.Component {
   onFieldChange = (event) => {
@@ -31,6 +32,25 @@ export class Datasource extends React.Component {
       ...this.props.datasource,
       detail
     });
+  }
+
+  renderDetail = (type, detail) => {
+    switch(type) {
+      case 'number':
+        return (
+          <DatasourceNumber
+            detail={detail}
+            onChange={this.onDetailChange}
+          ></DatasourceNumber>
+        );
+      default:
+        return (
+          <DatasourceText
+            detail={detail}
+            onChange={this.onDetailChange}
+          ></DatasourceText>
+        );
+    }
   }
 
   render = () => {
@@ -66,10 +86,7 @@ export class Datasource extends React.Component {
             onChange={this.onFieldChange}
           />
         </KuiFormRow>
-        <DatasourceText
-          detail={detail}
-          onChange={this.onDetailChange}
-        ></DatasourceText>
+        {this.renderDetail(type, detail)}
       </KuiForm>
     );
   }
