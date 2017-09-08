@@ -12,66 +12,30 @@ import {
 } from 'ui_framework/components';
 
 export class Datasource extends React.Component {
-  constructor(...args) {
-    super(...args);
-
-    const {
-      datasource: {
-        id,
-        type,
-        field
-      }
-    } = this.props;
-
-    this.state = {
-      id,
-      type,
-      field
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const {
-      datasource: {
-        id,
-        type,
-        field
-      }
-    } = nextProps;
-
-    this.setState({
-      ...this.state,
-      id,
-      type,
-      field
-    });
-  }
-
   onFieldChange = (event) => {
-    this.setState({
-      ...this.state,
+    this.props.onUpdate({
+      ...this.props.datasource,
       field: event.target.value
     });
   }
   
   onTypeChange = (event) => {
-    this.setState({
-      ...this.state,
+    this.props.onUpdate({
+      ...this.props.datasource,
       type: event.target.value
     });
   }
 
   render = () => {
     const makeId = createHtmlIdGenerator(['text']);
-    const {
-      datasource
-    } = this.props;
 
     const {
-      id,
-      field,
-      type
-    } = this.state;
+      datasource: {
+        id,
+        field,
+        type
+      }
+    } = this.props;
 
     return (
       <KuiForm>
@@ -100,6 +64,7 @@ export class Datasource extends React.Component {
   }
 
   static propTypes = {
-    datasource: PropTypes.object
+    datasource: PropTypes.object,
+    onUpdate: PropTypes.func
   }
 }

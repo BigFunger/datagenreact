@@ -5,3 +5,6 @@ export const datagenEditAddDatasource =
 
 export const datagenEditLoadDatasource =
   createAction('DATAGEN_EDIT_LOAD_DATASOURCE', ({ id }) => ({ id }));
+
+export const updateDatasource =
+  createAction('DATAGEN_EDIT_UPDATE_DATASOUCE', ({ datasource }) => ({ datasource }));
