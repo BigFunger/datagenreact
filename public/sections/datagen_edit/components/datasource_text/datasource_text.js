@@ -9,18 +9,14 @@ import {
 export class DatasourceText extends React.Component {  
   onTextChange = (event) => {
     this.props.onChange({
-      ...this.props.detail,
+      ...this.props,
       text: event.target.value
     });
   }
 
   render = () => {
     const makeId = createHtmlIdGenerator(['datasource']);
-    const {
-      detail: {
-        text
-      }
-    } = this.props;
+    const { text } = this.props;
 
     return (
       <div>
@@ -39,7 +35,7 @@ export class DatasourceText extends React.Component {
   }
 
   static propTypes = {
-    detail: PropTypes.object,
+    text: PropTypes.string,
     onChange: PropTypes.func
   }
 }

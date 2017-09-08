@@ -5,7 +5,7 @@ import { updateDatasource } from '../../../../store/actions/datagen_edit';
 
 const mapStateToProps = (state) => {
   const datasource = getEditDatasource(state);
-
+  
   return {
     datasource
   };

@@ -30,27 +30,29 @@ export class Datasource extends React.Component {
   onDetailChange = (detail) => {
     this.props.onChange({
       ...this.props.datasource,
-      detail
+      detail: {...detail}
     });
   }
 
   renderDetail = (type, detail) => {
-    switch(type) {
-      case 'number':
-        return (
-          <DatasourceNumber
-            detail={detail}
-            onChange={this.onDetailChange}
-          ></DatasourceNumber>
-        );
-      default:
-        return (
-          <DatasourceText
-            detail={detail}
-            onChange={this.onDetailChange}
-          ></DatasourceText>
-        );
+    const DetailNodeTypes = {
+      'text': DatasourceText,
+      'number': DatasourceNumber
+    };
+    const DetailNodeType = DetailNodeTypes[type];
+
+    if (!DetailNodeType) {
+      return (
+        <div>Oops. unknown type of {type}</div>
+      );
     }
+    
+    return (
+      <DetailNodeType
+        detail={detail}
+        onChange={this.onDetailChange}>
+      </DetailNodeType>
+    );
   }
 
   render = () => {

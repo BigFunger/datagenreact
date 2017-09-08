@@ -6,21 +6,17 @@ import {
   KuiFieldNumber
 } from 'ui_framework/components';
 
-export class DatasourceNumber extends React.Component {  
+export class DatasourceNumber extends React.Component {
   onLengthChange = (event) => {
     this.props.onChange({
-      ...this.props.detail,
+      ...this.props,
       length: event.target.value
     });
   }
 
   render = () => {
     const makeId = createHtmlIdGenerator(['datasource']);
-    const {
-      detail: {
-        length
-      }
-    } = this.props;
+    const { length } = this.props;
 
     return (
       <div>
@@ -40,7 +36,7 @@ export class DatasourceNumber extends React.Component {
   }
 
   static propTypes = {
-    detail: PropTypes.object,
+    length: PropTypes.number,
     onChange: PropTypes.func
   }
 }
