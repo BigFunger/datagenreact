@@ -9,31 +9,10 @@ import {
 } from 'ui_framework/components';
 
 export class DatasourceText extends React.Component {
-  onMethodChange = (event) => {
+  onChange = (field) => (event) => {
     this.props.onChange({
       ...this.props,
-      method: event.target.value
-    });
-  }
-
-  onLengthChange = (event) => {
-    this.props.onChange({
-      ...this.props,
-      length: event.target.value
-    });
-  }
-
-  onCharsetChange = (event) => {
-    this.props.onChange({
-      ...this.props,
-      charset: event.target.value
-    });
-  }
-
-  onTextChange = (event) => {
-    this.props.onChange({
-      ...this.props,
-      text: event.target.value
+      [field]: event.target.value
     });
   }
 
@@ -55,7 +34,7 @@ export class DatasourceText extends React.Component {
           <KuiSelect
             name="method"
             value={method}
-            onChange={this.onMethodChange}
+            onChange={this.onChange('method')}
             options={[
               { value: 'random', text: 'Randomly generated' },
               { value: 'values', text: 'Values' }
@@ -72,7 +51,7 @@ export class DatasourceText extends React.Component {
               name="length"
               min={0}
               value={length || ''}
-              onChange={this.onLengthChange}
+              onChange={this.onChange('length')}
             />
           </KuiFormRow>
         }
@@ -85,7 +64,7 @@ export class DatasourceText extends React.Component {
             <KuiFieldText
               name="charset"
               value={charset || ''}
-              onChange={this.onCharsetChange}
+              onChange={this.onChange('charset')}
             />
           </KuiFormRow>
         }
@@ -97,7 +76,7 @@ export class DatasourceText extends React.Component {
           <KuiFieldText
             name="text"
             value={text || ''}
-            onChange={this.onTextChange}
+            onChange={this.onChange('text')}
           />
         </KuiFormRow>
       </div>

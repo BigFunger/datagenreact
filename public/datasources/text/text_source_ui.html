@@ -7,6 +7,7 @@
     ng-model="datasource.field"
     input-focus>
 </div>
+
 <div class="form-group">
   <label>Value Source:</label>
   <ul>
@@ -14,10 +15,12 @@
     <li><label><input type="radio" ng-model="datasource.method" value="values"/> Values</label></li>
   </ul>
 </div>
+
 <div class="form-group" ng-show="datasource.method === 'random'">
   <label>Length:</label>
   <input type="text" ng-model="datasource.length" />
 </div>
+
 <div class="form-group" ng-show="datasource.method === 'random'">
   <label>Character set:</label>
   <input
@@ -26,6 +29,7 @@
     class="wide"
     ng-trim="false">
 </div>
+
 <div class="form-group" ng-show="datasource.method === 'values'">
   <label>Values (Equal chance of generating each value):</label>
   <datagen-list-textarea list="datasource.values"></datagen-list-textarea>
