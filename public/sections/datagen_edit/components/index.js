@@ -1,3 +1,4 @@
+export { BottomBar } from './bottom_bar';
 export { DatagenEdit } from './datagen_edit';
 export { Dataplan } from './dataplan';
 export { Datasource } from './Datasource';

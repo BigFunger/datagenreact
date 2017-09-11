@@ -1,16 +1,45 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import {
+  updateDataplan,
+  updateDatasource,
   setTab,
-  datagenEditLoadDatasource
+  datagenEditLoadDatasource,
+  save,
+  discard
 } from '../../actions/datagen_edit';
 
 const defaultState = {
   selectedTabId: 'dataplan',
-  currentDatasourceId: 'the_id_for_field2'
+  currentDatasourceId: 'the_id_for_field2',
+  bottomBarVisible: false
 };
 
 export const uiState = handleActions({
+  [save](state, action) {
+    return {
+      ...state,
+      bottomBarVisible: false
+    };
+  },
+  [discard](state, action) {
+    return {
+      ...state,
+      bottomBarVisible: false
+    };
+  },
+  [updateDataplan](state, action) {
+    return {
+      ...state,
+      bottomBarVisible: true
+    };
+  },
+  [updateDatasource](state, action) {
+    return {
+      ...state,
+      bottomBarVisible: true
+    };
+  },
   [setTab](state, action) {
     const { id } = action.payload;
     

@@ -9,6 +9,7 @@ import {
   KuiSpacer
 } from 'ui_framework/components';
 import {
+  BottomBar,
   Tabs,
   Dataplan,
   Datasources
@@ -41,6 +42,7 @@ export class PageContent extends React.Component {
           <Tabs />
           <KuiSpacer size="l" />
           <CurrentContent />
+          <BottomBar />
         </KuiPageContentBody>
       </KuiPageContent>
     );

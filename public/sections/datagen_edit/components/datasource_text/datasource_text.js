@@ -6,7 +6,7 @@ import {
   KuiFieldText
 } from 'ui_framework/components';
 
-export class DatasourceText extends React.Component {  
+export class DatasourceText extends React.Component {
   onTextChange = (event) => {
     this.props.onChange({
       ...this.props,

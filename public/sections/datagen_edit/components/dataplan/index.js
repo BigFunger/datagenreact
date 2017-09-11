@@ -1,12 +1,27 @@
 import { connect } from 'react-redux';
 import { Dataplan as PresentationComponent } from './dataplan';
+import {
+  updateDataplan
+} from '../../../../store/actions/datagen_edit';
 
 const mapStateToProps = (state) => {
-  return {};
+  const {
+    datagenEdit: {
+      dataplan
+    }
+  } = state;
+  
+  return {
+    ...dataplan
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    onChange: (dataplan) => {
+      dispatch(updateDataplan({dataplan}));
+    }
+  };
 }
 
 export const Dataplan = connect(
