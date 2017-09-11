@@ -76,10 +76,15 @@ export class Datasource extends React.Component {
           id={makeId('type')}
           label="Datasource type"
         >
-          <KuiFieldText
+          <KuiSelect
             name="type"
             value={type}
             onChange={this.onTypeChange}
+            options={[
+              { value: 'text', text: 'Text' },
+              { value: 'number', text: 'Number' },
+              { value: 'date', text: 'Date' }
+            ]}
           />
         </KuiFormRow>
         <KuiFormRow

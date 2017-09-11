@@ -22,7 +22,7 @@ export class DatasourceText extends React.Component {
       <div>
         <KuiFormRow
           id={makeId('text')}
-          label="Text specific field"
+          label="Text"
         >
           <KuiFieldText
             name="text"
