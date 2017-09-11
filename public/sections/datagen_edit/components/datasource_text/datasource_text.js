@@ -26,7 +26,7 @@ export class DatasourceText extends React.Component {
         >
           <KuiFieldText
             name="text"
-            value={text}
+            value={text || ''}
             onChange={this.onTextChange}
           />
         </KuiFormRow>

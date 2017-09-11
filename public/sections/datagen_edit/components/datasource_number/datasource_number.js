@@ -27,7 +27,7 @@ export class DatasourceNumber extends React.Component {
           <KuiFieldNumber
             name="length"
             min={1}
-            value={length}
+            value={length || ''}
             onChange={this.onLengthChange}
           />
         </KuiFormRow>
