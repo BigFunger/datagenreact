@@ -4,11 +4,17 @@ import { DatasourceText as PresentationComponent } from './datasource_text';
 const mapStateToProps = (state, props) => {
   const {
     detail: {
+      method,
+      length,
+      charset,
       text
     }
   } = props;
   
   return {
+    method,
+    length,
+    charset,
     text
   };
 };
