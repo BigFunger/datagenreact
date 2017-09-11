@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
 import { DatasourceList as PresentationComponent } from './datasource_list';
 import { datagenEditLoadDatasource } from '../../../../store/actions/datagen_edit';
-import { getAllDatasources } from '../../../../store/reducers/datagen_app';
+import { getAllDatasources, getEditDatasource } from '../../../../store/reducers/datagen_app';
 
 const mapStateToProps = (state) => {
   const datasources = getAllDatasources(state);
+  const datasource = getEditDatasource(state);
 
   return {
+    currentDatasourceId: datasource.id,
     datasources
   };
 };

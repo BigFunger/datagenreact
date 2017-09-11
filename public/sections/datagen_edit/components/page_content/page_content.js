@@ -42,6 +42,7 @@ export class PageContent extends React.Component {
           <Tabs />
           <KuiSpacer size="l" />
           <CurrentContent />
+          <KuiSpacer size="xxl" />
           <BottomBar />
         </KuiPageContentBody>
       </KuiPageContent>

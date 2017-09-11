@@ -3,40 +3,93 @@ import PropTypes from 'prop-types';
 import { createHtmlIdGenerator } from '../../../../lib/html_id_generator';
 import {
   KuiFormRow,
-  KuiFieldNumber
+  KuiFieldNumber,
+  KuiSelect
 } from 'ui_framework/components';
 
 export class DatasourceNumber extends React.Component {
-  onLengthChange = (event) => {
+  onChange = (field) => (event) => {
     this.props.onChange({
       ...this.props,
-      length: event.target.value
+      [field]: event.target.value
     });
   }
 
   render = () => {
     const makeId = createHtmlIdGenerator(['datasource']);
-    const { length } = this.props;
+    const {
+      type,
+      rangeMin,
+      rangeMax,
+      scalingFactor
+    } = this.props;
 
     return (
       <div>
         <KuiFormRow
-          id={makeId('length')}
-          label="Length"
+          id={makeId('type')}
+          label="Numeric Type"
         >
-          <KuiFieldNumber
-            name="length"
-            min={1}
-            value={length || ''}
-            onChange={this.onLengthChange}
+          <KuiSelect
+            name="type"
+            value={type}
+            onChange={this.onChange('type')}
+            options={[
+              { value: 'long', text: 'long' },
+              { value: 'integer', text: 'integer' },
+              { value: 'short', text: 'short' },
+              { value: 'byte', text: 'byte' },
+              { value: 'double', text: 'double' },
+              { value: 'float', text: 'float' },
+              { value: 'half_float', text: 'half_float' },
+              { value: 'scaled_float', text: 'scaled_float' }
+            ]}
           />
         </KuiFormRow>
+
+        <KuiFormRow
+          id={makeId('rangeMin')}
+          label="Range Min"
+        >
+          <KuiFieldNumber
+            name="rangeMin"
+            value={rangeMin || ''}
+            onChange={this.onChange('rangeMin')}
+          />
+        </KuiFormRow>
+
+        <KuiFormRow
+          id={makeId('rangeMax')}
+          label="Range Max"
+        >
+          <KuiFieldNumber
+            name="rangeMax"
+            value={rangeMax || ''}
+            onChange={this.onChange('rangeMax')}
+          />
+        </KuiFormRow>
+
+        { type === 'scaled_float' &&
+          <KuiFormRow
+            id={makeId('scalingFactor')}
+            label="Scaling Factor"
+          >
+            <KuiFieldText
+              name="scalingFactor"
+              value={scalingFactor || ''}
+              onChange={this.onChange('scalingFactor')}
+            />
+          </KuiFormRow>
+        }
       </div>
     );
   }
 
   static propTypes = {
-    length: PropTypes.number,
+    type: PropTypes.string,
+    rangeMin: PropTypes.number,
+    rangeMax: PropTypes.number,
+    scalingFactor: PropTypes.string,
     onChange: PropTypes.func
   }
 }

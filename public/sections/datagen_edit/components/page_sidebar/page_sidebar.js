@@ -12,7 +12,7 @@ export class PageSidebar extends React.Component {
     const { id } = this.props;
 
     return (
-      <KuiPageSideBar>
+      <KuiPageSideBar style={{height: '100%'}}>
         <DatasourceList />
       </KuiPageSideBar>
     );
