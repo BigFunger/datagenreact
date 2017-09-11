@@ -4,12 +4,26 @@ import { DatasourceDate as PresentationComponent } from './datasource_date';
 const mapStateToProps = (state, props) => {
   const {
     detail: {
-      method
+      method,
+      value,
+      startDate,
+      endDate,
+      applyNormalDistribution,
+      initialOffset,
+      distributionWindow,
+      distributionOffset
     }
   } = props;
   
   return {
-    method
+    method,
+    value,
+    startDate,
+    endDate,
+    applyNormalDistribution,
+    initialOffset,
+    distributionWindow,
+    distributionOffset
   };
 };
 
