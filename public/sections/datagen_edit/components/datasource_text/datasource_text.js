@@ -5,7 +5,8 @@ import {
   KuiFormRow,
   KuiFieldText,
   KuiSelect,
-  KuiFieldNumber
+  KuiFieldNumber,
+  KuiTextArea
 } from 'ui_framework/components';
 
 export class DatasourceText extends React.Component {
@@ -22,7 +23,10 @@ export class DatasourceText extends React.Component {
       method,
       length,
       charset,
-      text
+      values,
+      analyzer,
+      searchAnalyzer,
+      searchQuoteAnalyzer
     } = this.props;
 
     return (
@@ -69,14 +73,50 @@ export class DatasourceText extends React.Component {
           </KuiFormRow>
         }
 
+        { method === 'values' &&
+          <KuiFormRow
+            id={makeId('values')}
+            label="Values"
+            helpText="Equal chance of generating each value"
+          >
+            <KuiTextArea
+              name="values"
+              value={values || ''}
+              onChange={this.onChange('values')}
+            />
+          </KuiFormRow>
+        }
+        
         <KuiFormRow
-          id={makeId('text')}
-          label="Text"
+          id={makeId('analyzer')}
+          label="Analyzer"
         >
           <KuiFieldText
-            name="text"
-            value={text || ''}
-            onChange={this.onChange('text')}
+            name="analyzer"
+            value={analyzer || ''}
+            onChange={this.onChange('analyzer')}
+          />
+        </KuiFormRow>
+        
+        <KuiFormRow
+          id={makeId('searchAnalyzer')}
+          label="Search Analyzer"
+        >
+          <KuiFieldText
+            name="searchAnalyzer"
+            value={searchAnalyzer || ''}
+            onChange={this.onChange('searchAnalyzer')}
+          />
+        </KuiFormRow>
+        
+        <KuiFormRow
+          id={makeId('searchQuoteAnalyzer')}
+          label="Search Quote Analyzer"
+        >
+          <KuiFieldText
+            name="searchQuoteAnalyzer"
+            value={searchQuoteAnalyzer || ''}
+            onChange={this.onChange('searchQuoteAnalyzer')}
           />
         </KuiFormRow>
       </div>
@@ -84,10 +124,13 @@ export class DatasourceText extends React.Component {
   }
 
   static propTypes = {
-    text: PropTypes.string,
+    analyzer: PropTypes.string,
+    searchAnalyzer: PropTypes.string,
+    searchQuoteAnalyzer: PropTypes.string,
     charset: PropTypes.string,
     method: PropTypes.string,
     length: PropTypes.number,
+    values: PropTypes.string,
     onChange: PropTypes.func
   }
 }
