@@ -100,7 +100,7 @@ export class Datasource extends React.Component {
           <KuiButtonEmpty
             type="danger"
             size="small"
-            onClick={onDelete}
+            onClick={() => onDelete(id)}
           >
             Delete
           </KuiButtonEmpty>

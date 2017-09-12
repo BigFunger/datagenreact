@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import {
-  datagenEditAddDatasource,
+  addDatasource,
+  deleteDatasource,
   updateDatasource
 } from '../../actions/datagen_edit';
 
@@ -15,6 +16,14 @@ const byId = handleActions({
       ...state,
       [datasource.id]: { ...datasource }
     };
+  },
+  [deleteDatasource](state, action) {
+    const { id } = action.payload;
+
+    const result = { ...state };
+    delete result[id];
+
+    return result;
   }
 },
   {
@@ -54,6 +63,15 @@ const byId = handleActions({
 );
 
 const allIds = handleActions({
+  [deleteDatasource](state, action) {
+    const { id } = action.payload;
+    const index = state.indexOf(id);
+
+    return [
+      ...state.slice(0, index),
+      ...state.slice(index + 1)
+    ];
+  }
 }, ['the_id_for_field1', 'the_id_for_field2', 'the_id_for_field3', 'the_id_for_field4']);
 
 export const datasources = combineReducers({

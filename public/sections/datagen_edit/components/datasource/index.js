@@ -16,8 +16,8 @@ const mapDispatchToProps = (dispatch) => {
     onChange: (datasource) => {
       dispatch(updateDatasource({datasource}));
     },
-    onDelete: () => {
-      dispatch(deleteDatasource());
+    onDelete: (id) => {
+      dispatch(deleteDatasource({id}));
     }
   };
 }

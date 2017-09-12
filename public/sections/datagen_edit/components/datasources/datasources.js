@@ -16,6 +16,7 @@ import {
 export class Datasources extends React.Component {
   render = () => {
     const {
+      showEditor,
       totalDatasources,
       onAddDatasouce
     } = this.props;
@@ -47,7 +48,7 @@ export class Datasources extends React.Component {
             <PageSidebar />
           </KuiFlexItem>
           <KuiFlexItem>
-            <Datasource />
+            {showEditor && <Datasource />}
           </KuiFlexItem>
         </KuiFlexGroup>
       </div>
@@ -55,6 +56,8 @@ export class Datasources extends React.Component {
   }
 
   static propTypes = {
+    showEditor: PropTypes.bool,
+    totalDatasources: PropTypes.number,
     onAddDatasouce: PropTypes.func
   }
 }

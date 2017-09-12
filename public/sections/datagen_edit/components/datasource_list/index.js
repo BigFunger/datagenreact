@@ -7,8 +7,10 @@ const mapStateToProps = (state) => {
   const datasources = getAllDatasources(state);
   const datasource = getEditDatasource(state);
 
+  const currentDatasourceId = datasource ? datasource.id : null;
+
   return {
-    currentDatasourceId: datasource.id,
+    currentDatasourceId,
     datasources
   };
 };

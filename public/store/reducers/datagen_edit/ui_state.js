@@ -6,7 +6,8 @@ import {
   setTab,
   datagenEditLoadDatasource,
   save,
-  discard
+  discard,
+  deleteDatasource
 } from '../../actions/datagen_edit';
 
 const defaultState = {
@@ -54,6 +55,12 @@ export const uiState = handleActions({
     return {
       ...state,
       currentDatasourceId: id
+    };
+  },
+  [deleteDatasource](state, action) {
+    return {
+      ...state,
+      currentDatasourceId: null
     };
   }
 }, defaultState);
