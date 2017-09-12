@@ -3,8 +3,11 @@ import { createAction } from 'redux-actions';
 export const setTab =
   createAction('DATAGEN_EDIT_SET_TAB', ({ id }) => ({ id }));
 
-export const datagenEditAddDatasource =
+export const addDatasource =
   createAction('DATAGEN_EDIT_ADD_DATASOURCE');
+  
+export const deleteDatasource =
+  createAction('DATAGEN_EDIT_DELETE_DATASOURCE');
 
 export const datagenEditLoadDatasource =
   createAction('DATAGEN_EDIT_LOAD_DATASOURCE', ({ id }) => ({ id }));

@@ -7,7 +7,10 @@ import {
   KuiSelect,
   KuiTextArea,
   KuiFieldNumber,
-  KuiFieldText
+  KuiFieldText,
+  KuiButtonEmpty,
+  KuiSpacer,
+  KuiHorizontalRule
 } from 'ui_framework/components';
 import {
   DatasourceText,
@@ -16,20 +19,6 @@ import {
 } from '../../components';
 
 export class Datasource extends React.Component {
-  onFieldChange = (event) => {
-    this.props.onChange({
-      ...this.props.datasource,
-      field: event.target.value
-    });
-  }
-  
-  onTypeChange = (event) => {
-    this.props.onChange({
-      ...this.props.datasource,
-      type: event.target.value
-    });
-  }
-
   onChange = (field, valueProp = 'value') => (event) => {
     this.props.onChange({
       ...this.props,
@@ -74,7 +63,8 @@ export class Datasource extends React.Component {
         field,
         type,
         detail
-      }
+      },
+      onDelete
     } = this.props;
 
     return (
@@ -105,6 +95,16 @@ export class Datasource extends React.Component {
           />
         </KuiFormRow>
         {this.renderDetail(type, detail)}
+        <KuiHorizontalRule margin="medium" />
+        <div>
+          <KuiButtonEmpty
+            type="danger"
+            size="small"
+            onClick={onDelete}
+          >
+            Delete
+          </KuiButtonEmpty>
+        </div>
       </KuiForm>
     );
   }

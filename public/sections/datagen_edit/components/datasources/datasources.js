@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  KuiTitle,
   KuiSideNav,
   KuiFlexGroup,
-  KuiFlexItem
+  KuiFlexItem,
+  KuiHorizontalRule,
+  KuiButton
 } from 'ui_framework/components';
 import {
   Datasource,
@@ -12,21 +15,46 @@ import {
 
 export class Datasources extends React.Component {
   render = () => {
-    const { id } = this.props;
+    const {
+      totalDatasources,
+      onAddDatasouce
+    } = this.props;
 
     return (
-      <KuiFlexGroup>
-        <KuiFlexItem grow={false} style={{width: 200}}>
-          <PageSidebar />
-        </KuiFlexItem>
-        <KuiFlexItem>
-          <Datasource />
-        </KuiFlexItem>
-      </KuiFlexGroup>
+      <div>
+        <KuiFlexGroup>
+          <KuiFlexItem>
+            <KuiTitle size="small">
+              <h2>{totalDatasources} Data { totalDatasources === 1 ? 'source' : 'sources'}</h2>
+            </KuiTitle>
+          </KuiFlexItem>
+          <KuiFlexItem grow={false}>
+            <KuiFlexGroup gutterSize="small">
+              <KuiFlexItem>
+                <KuiButton
+                  size="small"
+                  onClick={onAddDatasouce}
+                >
+                  Add data source
+                </KuiButton>
+              </KuiFlexItem>
+            </KuiFlexGroup>
+          </KuiFlexItem>
+        </KuiFlexGroup>
+        <KuiHorizontalRule margin="medium" />
+        <KuiFlexGroup>
+          <KuiFlexItem grow={false} style={{width: 200}}>
+            <PageSidebar />
+          </KuiFlexItem>
+          <KuiFlexItem>
+            <Datasource />
+          </KuiFlexItem>
+        </KuiFlexGroup>
+      </div>
     );
   }
 
   static propTypes = {
-    id: PropTypes.string
+    onAddDatasouce: PropTypes.func
   }
 }

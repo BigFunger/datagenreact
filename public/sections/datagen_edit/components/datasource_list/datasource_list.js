@@ -14,7 +14,7 @@ export class DatasourceList extends React.Component {
       onDatasourceClicked
     } = this.props;
 
-    const listItems = datasources.map((datasource) => {
+    const datasourceListItems = datasources.map((datasource) => {
       return (
         <KuiSideNavItem
           key={datasource.id}
@@ -32,7 +32,7 @@ export class DatasourceList extends React.Component {
         mobileTitle="Data sources"
         style={{height: '100%'}}
         alternateStyle>
-        {listItems}
+        {datasourceListItems}
       </KuiSideNav>
     );
   }

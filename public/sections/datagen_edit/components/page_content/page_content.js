@@ -34,9 +34,6 @@ export class PageContent extends React.Component {
               <h2>New Data Plan</h2>
             </KuiTitle>
           </KuiPageContentHeaderSection>
-          <KuiPageContentHeaderSection>
-            Content abilities
-          </KuiPageContentHeaderSection>
         </KuiPageContentHeader>
         <KuiPageContentBody>
           <Tabs />
