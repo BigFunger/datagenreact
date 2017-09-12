@@ -1,3 +1,4 @@
+import { pick } from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createHtmlIdGenerator } from '../../../../lib/html_id_generator';
@@ -10,7 +11,12 @@ import {
 export class DatasourceNumber extends React.Component {
   onChange = (field, valueProp = 'value') => (event) => {
     this.props.onChange({
-      ...this.props,
+      ...pick(this.props, [
+        'type',
+        'rangeMin',
+        'rangeMax',
+        'scalingFactor'
+      ]),
       [field]: event.target[valueProp]
     });
   }

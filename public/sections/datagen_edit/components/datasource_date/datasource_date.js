@@ -1,3 +1,4 @@
+import { pick } from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createHtmlIdGenerator } from '../../../../lib/html_id_generator';
@@ -12,7 +13,16 @@ import {
 export class DatasourceDate extends React.Component {
   onChange = (field, valueProp = 'value') => (event) => {
     this.props.onChange({
-      ...this.props,
+      ...pick(this.props, [
+        'method',
+        'value',
+        'startDate',
+        'endDate',
+        'applyNormalDistribution',
+        'initialOffset',
+        'distributionWindow',
+        'distributionOffset'
+      ]),
       [field]: event.target[valueProp]
     });
   }

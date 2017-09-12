@@ -21,7 +21,7 @@ import {
 export class Datasource extends React.Component {
   onChange = (field, valueProp = 'value') => (event) => {
     this.props.onChange({
-      ...this.props,
+      ...this.props.datasource,
       [field]: event.target[valueProp]
     });
   }

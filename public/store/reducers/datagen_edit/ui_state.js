@@ -7,7 +7,8 @@ import {
   datagenEditLoadDatasource,
   save,
   discard,
-  deleteDatasource
+  deleteDatasource,
+  addDatasource
 } from '../../actions/datagen_edit';
 
 const defaultState = {
@@ -61,6 +62,14 @@ export const uiState = handleActions({
     return {
       ...state,
       currentDatasourceId: null
+    };
+  },
+  [addDatasource](state, action) {
+    const { id } = action.payload;
+
+    return {
+      ...state,
+      currentDatasourceId: id
     };
   }
 }, defaultState);

@@ -4,7 +4,7 @@ export const setTab =
   createAction('DATAGEN_EDIT_SET_TAB', ({ id }) => ({ id }));
 
 export const addDatasource =
-  createAction('DATAGEN_EDIT_ADD_DATASOURCE');
+  createAction('DATAGEN_EDIT_ADD_DATASOURCE', ({ id }) => ({ id }));
   
 export const deleteDatasource =
   createAction('DATAGEN_EDIT_DELETE_DATASOURCE');

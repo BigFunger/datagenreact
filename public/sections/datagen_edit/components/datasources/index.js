@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { Datasources as PresentationComponent } from './datasources';
 import { addDatasource } from '../../../../store/actions/datagen_edit';
 import { getAllDatasources, getEditDatasource } from '../../../../store/reducers/datagen_app';
+import { v4 } from 'node-uuid';
 
 const mapStateToProps = (state) => {
   const datasources = getAllDatasources(state);
@@ -16,7 +17,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onAddDatasouce: () => {
-      dispatch(addDatasource());
+      const id = v4();
+      dispatch(addDatasource({ id }));
     }
   };
 }

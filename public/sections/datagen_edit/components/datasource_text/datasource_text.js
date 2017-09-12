@@ -1,3 +1,4 @@
+import { pick } from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createHtmlIdGenerator } from '../../../../lib/html_id_generator';
@@ -12,7 +13,15 @@ import {
 export class DatasourceText extends React.Component {
   onChange = (field, valueProp = 'value') => (event) => {
     this.props.onChange({
-      ...this.props,
+      ...pick(this.props, [
+        'method',
+        'length',
+        'charset',
+        'values',
+        'analyzer',
+        'searchAnalyzer',
+        'searchQuoteAnalyzer'
+      ]),
       [field]: event.target[valueProp]
     });
   }
@@ -37,7 +46,7 @@ export class DatasourceText extends React.Component {
         >
           <KuiSelect
             name="method"
-            value={method}
+            value={method || 'values'}
             onChange={this.onChange('method')}
             options={[
               { value: 'random', text: 'Randomly generated' },
@@ -77,7 +86,7 @@ export class DatasourceText extends React.Component {
           <KuiFormRow
             id={makeId('values')}
             label="Values"
-            helpText="Equal chance of generating each value"
+            helpText="Line delimited. Equal chance of generating each value"
           >
             <KuiTextArea
               name="values"

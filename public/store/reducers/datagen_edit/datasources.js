@@ -24,43 +24,20 @@ const byId = handleActions({
     delete result[id];
 
     return result;
+  },
+  [addDatasource](state, action) {
+    const { id } = action.payload;
+
+    return {
+      ...state,
+      [id]: {
+        id,
+        type: 'text',
+        detail: {}
+      }
+    };
   }
-},
-  {
-    'the_id_for_field1': {
-      id: 'the_id_for_field1',
-      type: 'text',
-      field: 'field1',
-      detail: {
-        text: 'text value for field 1'
-      }
-    },
-    'the_id_for_field2': {
-      id: 'the_id_for_field2',
-      type: 'date',
-      field: 'field2',
-      detail: {
-        text: 'text value for field 2'
-      }
-    },
-    'the_id_for_field3': {
-      id: 'the_id_for_field3',
-      type: 'number',
-      field: 'field3',
-      detail: {
-        length: 10
-      }
-    },
-    'the_id_for_field4': {
-      id: 'the_id_for_field4',
-      type: 'text',
-      field: 'field4',
-      detail: {
-        text: 'text value for field 4'
-      }
-    }
-  }
-);
+}, {});
 
 const allIds = handleActions({
   [deleteDatasource](state, action) {
@@ -71,8 +48,16 @@ const allIds = handleActions({
       ...state.slice(0, index),
       ...state.slice(index + 1)
     ];
+  },
+  [addDatasource](state, action) {
+    const { id } = action.payload;
+
+    return [
+      ...state,
+      id
+    ];
   }
-}, ['the_id_for_field1', 'the_id_for_field2', 'the_id_for_field3', 'the_id_for_field4']);
+}, []);
 
 export const datasources = combineReducers({
   byId,
