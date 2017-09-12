@@ -11,11 +11,6 @@ import {
 
 export class DatasourceDate extends React.Component {
   onChange = (field, valueProp = 'value') => (event) => {
-    if (field === 'applyNormalDistribution') {
-      console.log(event.target[valueProp]);
-      //debugger;
-    }
-
     this.props.onChange({
       ...this.props,
       [field]: event.target[valueProp]

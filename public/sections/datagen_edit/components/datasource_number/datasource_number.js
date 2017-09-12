@@ -8,10 +8,10 @@ import {
 } from 'ui_framework/components';
 
 export class DatasourceNumber extends React.Component {
-  onChange = (field) => (event) => {
+  onChange = (field, valueProp = 'value') => (event) => {
     this.props.onChange({
       ...this.props,
-      [field]: event.target.value
+      [field]: event.target[valueProp]
     });
   }
 

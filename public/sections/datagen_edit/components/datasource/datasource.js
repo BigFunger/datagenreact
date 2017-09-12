@@ -30,6 +30,13 @@ export class Datasource extends React.Component {
     });
   }
 
+  onChange = (field, valueProp = 'value') => (event) => {
+    this.props.onChange({
+      ...this.props,
+      [field]: event.target[valueProp]
+    });
+  }
+
   onDetailChange = (detail) => {
     this.props.onChange({
       ...this.props.datasource,
@@ -78,8 +85,8 @@ export class Datasource extends React.Component {
         >
           <KuiSelect
             name="type"
-            value={type}
-            onChange={this.onTypeChange}
+            value={type || ''}
+            onChange={this.onChange('type')}
             options={[
               { value: 'text', text: 'Text' },
               { value: 'number', text: 'Number' },
@@ -93,8 +100,8 @@ export class Datasource extends React.Component {
         >
           <KuiFieldText
             name="field"
-            value={field}
-            onChange={this.onFieldChange}
+            value={field || ''}
+            onChange={this.onChange('field')}
           />
         </KuiFormRow>
         {this.renderDetail(type, detail)}
