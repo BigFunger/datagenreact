@@ -1,26 +1,32 @@
 import { random, reduce, get } from 'lodash';
 import { callWithRequestFactory } from '../../lib/call_with_request_factory';
 
-function loadDataplan(callWithRequest, dataplanId) {
+function loadDataplan(callWithRequest, id) {
   return callWithRequest('get', {
-    index: 'datagenreact',
+    index: 'datagen',
     type: 'dataplan',
-    id: dataplanId
+    id
   });
 }
 
 export default (server) => {
   server.route({
-    path: '/api/kibana/datagenreact/load/{id}',
+    path: '/api/kibana/datagenreact/dataplan/{id}',
     method: 'GET',
     handler: function (request, reply) {
-      const dataplanId = request.params.id;
+      const { id } = request.params;
       const callWithRequest = callWithRequestFactory(server, request);
 
-      return loadDataplan(callWithRequest, dataplanId)
+      return loadDataplan(callWithRequest, id)
       .then((response) => {
-        const dataplan = get(response, '_source.definition');
-        reply(dataplan);
+        const {
+          _source: {
+            dataplan,
+            datasources
+          }
+        } = response;
+
+        reply({ dataplan, datasources });
       })
       .catch((er) => {
         console.log(er);

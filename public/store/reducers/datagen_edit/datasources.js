@@ -3,12 +3,19 @@ import { handleActions } from 'redux-actions';
 import {
   addDatasource,
   deleteDatasource,
-  updateDatasource
+  updateDatasource,
+  loadSuccess
 } from '../../actions/datagen_edit';
 
 //TODO: Playing around with keeping a copy of the id value in the object.
 // this simplifies the code, but isn't quite DRY.
 const byId = handleActions({
+  [loadSuccess](state, action) {
+    const { datasources: { byId } } = action.payload;
+    return {
+      ...byId
+    };
+  },
   [updateDatasource](state, action) {
     const { datasource } = action.payload;
 
@@ -40,6 +47,12 @@ const byId = handleActions({
 }, {});
 
 const allIds = handleActions({
+  [loadSuccess](state, action) {
+    const { datasources: { allIds } } = action.payload;
+    return [
+      ...allIds
+    ];
+  },
   [deleteDatasource](state, action) {
     const { id } = action.payload;
     const index = state.indexOf(id);

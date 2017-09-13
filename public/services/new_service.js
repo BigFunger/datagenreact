@@ -7,16 +7,15 @@ export const newService = {
   fetchDataplans: () => {
     return fetch.get(`${apiPrefix}/dataplans`)
     .then(response => {
-
-      const result = response.data.map((dataplan) => {
-        dataplan.definition.dateCreated = Date.now();
+      const result = response.data.map(({ dataplan }) => {
         return dataplan;
       });
 
-      return response.data;
+      return result;
     })
     .catch(error => error)
   },
+
   saveDataplan: (dataplan, datasources) => {
     const id = dataplan.id;
 
@@ -26,6 +25,14 @@ export const newService = {
     };
 
     return fetch.post(`${apiPrefix}/save/${id}`, body)
+    .catch(error => error)
+  },
+
+  loadDataplan: (id) => {
+    return fetch.get(`${apiPrefix}/dataplan/${id}`)
+    .then(response => {
+      return response.data;
+    })
     .catch(error => error)
   }
 

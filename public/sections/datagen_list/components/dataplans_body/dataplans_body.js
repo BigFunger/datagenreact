@@ -30,16 +30,16 @@ export class DataplansBody extends React.Component {
             <KuiLink href={url}>{dataplan.id}</KuiLink>
           </KuiTableRowCell>
           <KuiTableRowCell>
-            {dataplan.definition.indexName}
+            {dataplan.indexName}
           </KuiTableRowCell>
           <KuiTableRowCell>
-            {dataplan.definition.typeName}
+            {dataplan.typeName}
           </KuiTableRowCell>
           <KuiTableRowCell>
-            {dataplan.definition.dateCreated}
+            {dataplan.dateCreated}
           </KuiTableRowCell>
           <KuiTableRowCell>
-            {dataplan.definition.dateLastRun}
+            {dataplan.dateLastRun}
           </KuiTableRowCell>
         </KuiTableRow>
       );

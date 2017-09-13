@@ -2,12 +2,13 @@ import { combineReducers } from 'redux';
 import { sortByOrder } from 'lodash';
 import { handleActions } from 'redux-actions';
 import { Pager } from 'ui/pager/pager';
-import { datagenFetchDataplansSuccess } from '../actions/datagen_list';
+import {
+  datagenFetchDataplansSuccess
+} from '../../actions/datagen_list';
 
 const byId = handleActions({
   [datagenFetchDataplansSuccess](state, action) {
     const { dataplans } = action.payload;
-
     return dataplans.reduce((acc, dataplan) => {
       acc[dataplan.id] = dataplan;
       return acc;

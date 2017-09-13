@@ -1,13 +1,15 @@
 import { handleActions } from 'redux-actions';
 import {
-  updateDataplan
+  updateDataplan,
+  loadSuccess
 } from '../../actions/datagen_edit';
 
 const defaultState = {
   id: 'dataplan-id-1234',
   indexName: 'myIndex',
   typeName: 'docs',
-  numberOfDocuments: 1000
+  numberOfDocuments: 1000,
+  dateCreated: null
 };
 
 export const dataplan = handleActions({
@@ -18,6 +20,12 @@ export const dataplan = handleActions({
     
     return {
       ...state,
+      ...dataplan
+    };
+  },
+  [loadSuccess](state, action) {
+    const { dataplan } = action.payload;
+    return {
       ...dataplan
     };
   }

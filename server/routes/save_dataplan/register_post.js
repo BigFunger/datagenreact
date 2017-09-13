@@ -1,16 +1,17 @@
 import { random, reduce } from 'lodash';
 import { callWithRequestFactory } from '../../lib/call_with_request_factory';
 
-function saveDataplan(callWithRequest, dataplanId, dataplan) {
+function saveDataplan(callWithRequest, id, dataplan, datasources) {
   const body = {
-    definition: dataplan
+    dataplan,
+    datasources
   };
 
   return callWithRequest('index', {
-    index: 'datagenreact',
+    index: 'datagen',
     type: 'dataplan',
-    id: dataplanId,
-    body: body
+    id,
+    body
   });
 }
 
@@ -19,15 +20,22 @@ export default (server) => {
     path: '/api/kibana/datagenreact/save/{id}',
     method: 'POST',
     handler: function (request, reply) {
-      const dataplanId = request.params.id;
       const callWithRequest = callWithRequestFactory(server, request);
-      const dataplan = request.payload;
+      const { id } = request.params;
+      const {
+        dataplan,
+        datasources
+      } = request.payload;
 
       console.log();
-      console.log(JSON.stringify(request.payload));
+      console.log(id);
+      console.log();
+      console.log(JSON.stringify(dataplan));
+      console.log();
+      console.log(JSON.stringify(datasources));
       console.log();
 
-      return saveDataplan(callWithRequest, dataplanId, dataplan)
+      return saveDataplan(callWithRequest, id, dataplan, datasources)
       .then(reply)
       .catch((er) => {
         console.log(er);

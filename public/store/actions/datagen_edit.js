@@ -20,6 +20,26 @@ export const updateDatasource =
 export const updateDataplan =
   createAction('DATAGEN_EDIT_UPDATE_DATAPLAN', ({ dataplan }) => ({ dataplan }));
   
+export const load = createThunk('DATAGEN_EDIT_LOAD',
+  ({ dispatch, getState, type }, { id }) => {
+    dispatch(createAction(type)({ id }));
+
+    return newService.loadDataplan(id)
+      .then(({ dataplan, datasources }) => {
+        dispatch(loadSuccess({ dataplan, datasources }));
+      })
+      .catch(error => {
+        dispatch(loadError({ error }));
+      });
+    }
+);
+
+export const loadSuccess =
+  createAction('DATAGEN_EDIT_LOAD_SUCCESS', ({ dataplan, datasources }) => ({ dataplan, datasources }));
+
+export const loadError =
+  createAction('DATAGEN_EDIT_LOAD_ERROR', ({ error }) => ({ error }));
+
 export const save = createThunk('DATAGEN_EDIT_SAVE', 
   ({ dispatch, getState, type }) => {
     const {
@@ -28,6 +48,10 @@ export const save = createThunk('DATAGEN_EDIT_SAVE',
         datasources
       }
     } = getState();
+
+    //TODO: This feels wrong since I'm modifying the 'state'.
+    //Not sure where or how I would do this otherwise.
+    dataplan.dateCreated = Date.now();
 
     dispatch(createAction(type)({ dataplan, datasources }));
 

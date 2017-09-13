@@ -7,6 +7,10 @@ import {
 import { PageContent } from '../../components';
 
 export class DatagenEdit extends React.Component {
+  componentWillMount = () => {
+    this.props.onLoad();
+  }
+
   render = () => {
     return (
       <KuiPage>

@@ -12,7 +12,7 @@ routes
   controller: ($injector) => {
     const store = createIntegratedStore($injector);
     const $route = $injector.get('$route');
-    const id = $route.current.params.id;
+    const { id } = $route.current.params;
 
     render(
       <Provider store={store}>

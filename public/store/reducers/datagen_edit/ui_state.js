@@ -8,16 +8,43 @@ import {
   save,
   discard,
   deleteDatasource,
-  addDatasource
+  addDatasource,
+  load,
+  loadError,
+  loadSuccess
 } from '../../actions/datagen_edit';
 
 const defaultState = {
   selectedTabId: 'dataplan',
   currentDatasourceId: 'the_id_for_field2',
-  bottomBarVisible: false
+  bottomBarVisible: false,
+  error: null,
+  loading: false,
 };
 
 export const uiState = handleActions({
+  [load](state, action) {
+    return {
+      ...state,
+      loading: true,
+      error: null
+    };
+  },
+  [loadSuccess](state, action) {
+    return {
+      ...state,
+      loading: false
+    };
+  },
+  [loadError](state, action) {
+    const { error } = action.payload;
+
+    return {
+      ...state,
+      loading: false,
+      error
+    };
+  },
   [save](state, action) {
     return {
       ...state,
