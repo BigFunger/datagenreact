@@ -34,6 +34,16 @@ export const newService = {
       return response.data;
     })
     .catch(error => error)
+  },
+  
+  generateData: (dataplan, datasources) => {
+    const body = {
+      dataplan,
+      datasources
+    };
+
+    return fetch.post(`${apiPrefix}/generate`, body)
+    .catch(error => error)
   }
 
 };

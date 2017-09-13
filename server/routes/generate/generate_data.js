@@ -1,6 +1,5 @@
 import _ from 'lodash';
-import uuid from 'node-uuid';
-import moment from 'moment';
+import { v4 } from 'node-uuid';
 
 export function generateData(callWithRequest, dataplan, server) {
   const promises = [];
@@ -10,11 +9,6 @@ export function generateData(callWithRequest, dataplan, server) {
   }
 
   return mapSeries(promises);
-}
-
-function modifyDate(body) {
-  const m = moment(body['@timestamp']);
-  body['@timestamp'] = m.startOf('month').startOf('day').toISOString();
 }
 
 function indexDocument(callWithRequest, dataplan, server) {
@@ -29,12 +23,11 @@ function indexDocument(callWithRequest, dataplan, server) {
   });
 
   //TODO create a mechanic for adding scripts to modify the data.
-  //modifyDate(body);
 
   return callWithRequest('index', {
     index: dataplan.indexName,
     type: dataplan.typeName,
-    id: uuid.v4(),
+    id: v4(),
     body: body
   });
 }

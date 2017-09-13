@@ -1,3 +1,4 @@
+export { ActionButtons } from './action_buttons';
 export { BottomBar } from './bottom_bar';
 export { DatagenEdit } from './datagen_edit';
 export { Dataplan } from './dataplan';
@@ -8,6 +9,5 @@ export { DatasourceNumber } from './datasource_number';
 export { Datasources } from './datasources';
 export { DatasourceText } from './datasource_text';
 export { PageContent } from './page_content';
-export { PageHeader } from './page_header';
 export { PageSidebar } from './page_sidebar';
 export { Tabs } from './tabs';

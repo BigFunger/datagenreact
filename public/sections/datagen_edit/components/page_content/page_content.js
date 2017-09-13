@@ -13,7 +13,8 @@ import {
   BottomBar,
   Tabs,
   Dataplan,
-  Datasources
+  Datasources,
+  ActionButtons
 } from '../../components';
 
 const tabPanels = {
@@ -37,6 +38,9 @@ export class PageContent extends React.Component {
             <KuiTitle>
               <h2>New Data Plan</h2>
             </KuiTitle>
+          </KuiPageContentHeaderSection>
+          <KuiPageContentHeaderSection>
+            <ActionButtons />
           </KuiPageContentHeaderSection>
         </KuiPageContentHeader>
         <KuiPageContentBody>

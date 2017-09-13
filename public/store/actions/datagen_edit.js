@@ -75,3 +75,32 @@ export const saveError =
   
 export const discard =
   createAction('DATAGEN_EDIT_DISCARD');
+
+  
+import { buildMapping } from 'plugins/datagenreact/../server/routes/generate/build_mapping';
+export const generateData = createThunk('DATAGEN_EDIT_GENERATE_DATA', 
+  ({ dispatch, getState, type }) => {
+    const {
+      datagenEdit: {
+        dataplan,
+        datasources
+      }
+    } = getState();
+
+    dispatch(createAction(type)({ dataplan, datasources }));
+
+    return newService.generateData(dataplan, datasources)
+      .then(() => {
+        dispatch(generateDataSuccess());
+      })
+      .catch(error => {
+        dispatch(generateDataError({ error }));
+      });
+  }
+);
+
+export const generateDataSuccess =
+  createAction('DATAGEN_EDIT_GENERATE_DATA_SUCCESS');
+
+export const generateDataError =
+  createAction('DATAGEN_EDIT_GENERATE_DATA_ERROR', ({ error }) => ({ error }));

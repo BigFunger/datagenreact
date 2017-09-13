@@ -1,28 +1,20 @@
 import _ from 'lodash';
+import { buildMapping } from './build_mapping';
 
-export function updateMapping(callWithRequest, dataplan) {
+export function updateMapping(callWithRequest, dataplan, datasources) {
   return loadMapping(callWithRequest, dataplan)
   .then((mapping) => {
     if (!mapping) {
       console.log('CREATE MAPPING');
-      return createMapping(callWithRequest, dataplan);
+      return createMapping(callWithRequest, dataplan, datasources);
     } else {
       console.log('CHANGE MAPPING');
-      return changeMapping(callWithRequest, dataplan, mapping);
+      //return changeMapping(callWithRequest, dataplan, mapping);
     }
   });
 }
 
 function changeMapping(callWithRequest, dataplan, mapping) {
-  // console.log('**************************************************');
-  // console.log('Change mapping')
-  // console.log('**************************************************');
-  // console.log(JSON.stringify(mapping));
-  // console.log('**************************************************');
-  // console.log(JSON.stringify(dataplan.mapping));
-  // console.log('**************************************************');
-  // console.log('');
-
   const typeMapping = _.get(dataplan.mapping, `mappings.${dataplan.typeName}`);
 
   return callWithRequest('transport.request', {
@@ -38,11 +30,13 @@ function changeMapping(callWithRequest, dataplan, mapping) {
   });
 }
 
-function createMapping(callWithRequest, dataplan) {
+function createMapping(callWithRequest, dataplan, datasources) {
+  const body = buildMapping(dataplan, datasources);
+
   return callWithRequest('transport.request', {
     path: `/${dataplan.indexName}`,
     method: 'PUT',
-    body: dataplan.mapping
+    body
   })
   .then((response) => {
     return response;
