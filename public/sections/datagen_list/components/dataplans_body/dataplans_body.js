@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  KuiLink,
   KuiCheckbox,
   KuiTableBody,
   KuiTableRow,
@@ -15,6 +16,8 @@ export class DataplansBody extends React.Component {
     } = this.props;
 
     const tableRows = dataplans.map(dataplan => {
+      const url = `#/management/elasticsearch/datagenreact/edit/${dataplan.id}`;
+
       return (
         <KuiTableRow key={dataplan.id}>
           <KuiTableRowCellCheckbox>
@@ -24,7 +27,7 @@ export class DataplansBody extends React.Component {
             />
           </KuiTableRowCellCheckbox>
           <KuiTableRowCell>
-            {dataplan.id}
+            <KuiLink href={url}>{dataplan.id}</KuiLink>
           </KuiTableRowCell>
           <KuiTableRowCell>
             {dataplan.definition.indexName}
