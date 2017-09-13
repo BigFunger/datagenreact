@@ -23,6 +23,10 @@ export default (server) => {
       const callWithRequest = callWithRequestFactory(server, request);
       const dataplan = request.payload;
 
+      console.log();
+      console.log(JSON.stringify(request.payload));
+      console.log();
+
       return saveDataplan(callWithRequest, dataplanId, dataplan)
       .then(reply)
       .catch((er) => {

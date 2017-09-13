@@ -4,6 +4,7 @@ import {
 } from '../../actions/datagen_edit';
 
 const defaultState = {
+  id: 'dataplan-id-1234',
   indexName: 'myIndex',
   typeName: 'docs',
   numberOfDocuments: 1000

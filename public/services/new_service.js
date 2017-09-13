@@ -16,6 +16,17 @@ export const newService = {
       return response.data;
     })
     .catch(error => error)
+  },
+  saveDataplan: (dataplan, datasources) => {
+    const id = dataplan.id;
+
+    const body = {
+      dataplan,
+      datasources
+    };
+
+    return fetch.post(`${apiPrefix}/save/${id}`, body)
+    .catch(error => error)
   }
 
 };

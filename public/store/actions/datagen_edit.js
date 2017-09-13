@@ -1,4 +1,6 @@
 import { createAction } from 'redux-actions';
+import { createThunk } from 'redux-thunks';
+import { newService } from 'plugins/datagenreact/services/new_service';
 
 export const setTab =
   createAction('DATAGEN_EDIT_SET_TAB', ({ id }) => ({ id }));
@@ -18,8 +20,32 @@ export const updateDatasource =
 export const updateDataplan =
   createAction('DATAGEN_EDIT_UPDATE_DATAPLAN', ({ dataplan }) => ({ dataplan }));
   
-export const save =
-  createAction('DATAGEN_EDIT_SAVE');
+export const save = createThunk('DATAGEN_EDIT_SAVE', 
+  ({ dispatch, getState, type }) => {
+    const {
+      datagenEdit: {
+        dataplan,
+        datasources
+      }
+    } = getState();
+
+    dispatch(createAction(type)({ dataplan, datasources }));
+
+    return newService.saveDataplan(dataplan, datasources)
+      .then(() => {
+        dispatch(saveSuccess());
+      })
+      .catch(error => {
+        dispatch(saveError({ error }));
+      });
+    }
+);
+
+export const saveSuccess =
+  createAction('DATAGEN_EDIT_SAVE_SUCCESS');
+
+export const saveError =
+  createAction('DATAGEN_EDIT_SAVE_ERROR', ({ error }) => ({ error }));
   
 export const discard =
   createAction('DATAGEN_EDIT_DISCARD');
