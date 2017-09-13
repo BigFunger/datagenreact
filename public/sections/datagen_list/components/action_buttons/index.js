@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(datagenFetchDataplans());
     },
     onNewDataplan: () => {
-      const url = '/management/elasticsearch/datagenreact/edit/1234';
+      const url = '/management/elasticsearch/datagenreact/edit';
       dispatch(kibanaIntegrationUrlChange({ url }));
     }
   };

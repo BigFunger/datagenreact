@@ -11,7 +11,7 @@ const mapDispatchToProps = (dispatch, props) => {
   const { id } = props;
 
   return {
-    onLoad: (field) => {
+    onLoad: () => {
       if (id) {
         dispatch(load({ id }));
       } else {
