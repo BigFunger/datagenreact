@@ -11,12 +11,13 @@ import {
   addDatasource,
   load,
   loadError,
-  loadSuccess
+  loadSuccess,
+  newDataplan
 } from '../../actions/datagen_edit';
 
 const defaultState = {
   selectedTabId: 'dataplan',
-  currentDatasourceId: 'the_id_for_field2',
+  currentDatasourceId: null,
   bottomBarVisible: false,
   error: null,
   loading: false,
@@ -31,8 +32,11 @@ export const uiState = handleActions({
     };
   },
   [loadSuccess](state, action) {
+    const currentDatasourceId = action.payload.datasources.allIds[0];
+
     return {
-      ...state,
+      ...defaultState,
+      currentDatasourceId,
       loading: false
     };
   },
@@ -97,6 +101,11 @@ export const uiState = handleActions({
     return {
       ...state,
       currentDatasourceId: id
+    };
+  },
+  [newDataplan](state, action) {
+    return {
+      ...defaultState
     };
   }
 }, defaultState);

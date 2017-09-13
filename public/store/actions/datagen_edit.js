@@ -19,7 +19,9 @@ export const updateDatasource =
   
 export const updateDataplan =
   createAction('DATAGEN_EDIT_UPDATE_DATAPLAN', ({ dataplan }) => ({ dataplan }));
-  
+
+export const newDataplan = createAction('DATAGEN_EDIT_NEW', ({ id }) => ({ id }));
+
 export const load = createThunk('DATAGEN_EDIT_LOAD',
   ({ dispatch, getState, type }, { id }) => {
     dispatch(createAction(type)({ id }));

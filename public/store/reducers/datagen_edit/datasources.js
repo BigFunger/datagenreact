@@ -4,7 +4,8 @@ import {
   addDatasource,
   deleteDatasource,
   updateDatasource,
-  loadSuccess
+  loadSuccess,
+  newDataplan
 } from '../../actions/datagen_edit';
 
 //TODO: Playing around with keeping a copy of the id value in the object.
@@ -43,6 +44,9 @@ const byId = handleActions({
         detail: {}
       }
     };
+  },
+  [newDataplan](state, action) {
+    return {};
   }
 }, {});
 
@@ -69,6 +73,9 @@ const allIds = handleActions({
       ...state,
       id
     ];
+  },
+  [newDataplan](state, action) {
+    return [];
   }
 }, []);
 

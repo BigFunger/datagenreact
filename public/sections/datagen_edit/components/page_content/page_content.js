@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  KuiLink,
   KuiTitle,
   KuiPageContent,
   KuiPageContentBody,
@@ -30,6 +31,9 @@ export class PageContent extends React.Component {
       <KuiPageContent>
         <KuiPageContentHeader>
           <KuiPageContentHeaderSection>
+            <KuiLink href="#/management/elasticsearch/datagenreact">
+              Data plans
+            </KuiLink>
             <KuiTitle>
               <h2>New Data Plan</h2>
             </KuiTitle>

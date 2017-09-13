@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { DatagenEdit as PresentationComponent } from './datagen_edit';
-import { load } from '../../../../store/actions/datagen_edit';
+import { load, newDataplan } from '../../../../store/actions/datagen_edit';
+import { v4 } from 'node-uuid';
 
 const mapStateToProps = (state) => {
   return {};
@@ -11,7 +12,11 @@ const mapDispatchToProps = (dispatch, props) => {
 
   return {
     onLoad: (field) => {
-      dispatch(load({ id }));
+      if (id) {
+        dispatch(load({ id }));
+      } else {
+        dispatch(newDataplan({ id: v4() }));
+      }
     }
   };
 }
