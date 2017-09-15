@@ -1,63 +1,66 @@
-import _ from 'lodash';
+import { random } from 'lodash';
 import moment from 'moment';
 import gaussian from 'gaussian';
 
-// field: '',
-// method: 'now',
-// value: '',
-// startDate: '',
-// endDate: '',
-// initialOffset: '',
-// distributionWindow: '',
-// distributionOffset: ''
+export const generator = (datasource, body) => {
+  const {
+    field,
+    detail: {
+      method,
+      startDate,
+      endDate,
+      value,
+      applyNormalDistribution,
+      initialOffset,
+      distributionWindow,
+      distributionOffset
+    }
+  } = datasource;
 
+  let result;
 
-export class DateSource {
-  constructor(datasource) {
-    this.datasource = datasource;
+  if (method === 'now') {
+    const date = new Date();
+    result = date.getTime();
   }
 
-  generate() {
-    const datasource = this.datasource;
-
-    let value
-    if (datasource.method === 'now') {
-      const date = new Date();
-      value = date.getTime();
-    }
-
-    if (datasource.method === 'value') {
-      const date = new Date(datasource.value);
-      value = date.getTime();
-    }
-
-    if(datasource.method === 'range') {
-      const startDate = new Date(datasource.startDate).getTime();
-      const endDate = new Date(datasource.endDate).getTime();
-      const range = endDate - startDate;
-      value = startDate + _.random(range);
-
-      if (datasource.applyNormalDistribution) {
-        const fullRange = endDate - startDate;
-        const limitedRange = fullRange - datasource.initialOffset;
-        const windowAndOffset = datasource.distributionWindow + datasource.distributionOffset;
-        const windowCount = Math.round(limitedRange / windowAndOffset, 0);
-        const windowIndex = _.random(windowCount);
-        const windowStart = startDate + datasource.distributionOffset + (windowAndOffset * (windowIndex));
-
-        const standardDeviations = 3;
-        const mean = datasource.distributionWindow / 2;
-        const variance = (mean / 3) * (mean / 3);
-
-        const distribution = gaussian(mean, variance);
-        const weightedValue = distribution.ppf(Math.random());
-        const date = new Date(windowStart + weightedValue);
-        value = date.getTime();
-      }
-    }
-
-    return {
-      [datasource.field]: value
-    };
+  if (method === 'value') {
+    const date = new Date(value);
+    result = date.getTime();
   }
-};
+
+  if(method === 'range') {
+    const startDateVal = new Date(startDate).getTime();
+    const endDateVal = new Date(endDate).getTime();
+    const range = endDateVal - startDateVal;
+    result = startDateVal + random(range);
+
+    if (applyNormalDistribution) {
+      const fullRange = endDateVal - startDateVal;
+      const limitedRange = fullRange - initialOffset;
+      const windowAndOffset = distributionWindow + distributionOffset;
+      const windowCount = Math.round(limitedRange / windowAndOffset, 0);
+      const windowIndex = random(windowCount);
+      const windowStart = startDate + distributionOffset + (windowAndOffset * (windowIndex));
+
+      const standardDeviations = 3;
+      const mean = distributionWindow / 2;
+      const variance = (mean / 3) * (mean / 3);
+
+      const distribution = gaussian(mean, variance);
+      const weightedValue = distribution.ppf(Math.random());
+      const date = new Date(windowStart + weightedValue);
+      result = date.getTime();
+    }
+  }
+
+  return {
+    ...body,
+    [field]: result
+  };
+}
+
+export const mapper = (datasource) => {
+  const { type } = datasource;
+  return { type };
+}

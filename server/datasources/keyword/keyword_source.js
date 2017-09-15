@@ -1,25 +1,38 @@
 import { randomItem } from '../../lib/random_item';
-import _ from 'lodash';
 
-export class KeywordSource {
-  constructor(datasource) {
-    this.datasource = datasource;
-  }
-
-  generate() {
-    const datasource = this.datasource;
-
-    let value
-    if (datasource.method === 'values') {
-      value = randomItem(datasource.values);
-    } else {
-      const validChar = datasource.charset;
-      value = '';
-      for (var i=0;i<datasource.length;i++) {
-        value = value + validChar[_.random(0, validChar.length-1)];
-      }
+export const generator = (datasource, body) => {
+  const {
+    field,
+    detail: {
+      method,
+      values,
+      charset,
+      length
     }
+  } = datasource;
 
-    return _.set({}, datasource.field, value);
+  if (method === 'values') {
+    const item = randomItem(values.split('\n'));
+    return {
+      ...body,
+      [field]: item
+    };
   }
-};
+
+  if (method === 'random') {
+    const characters = [];
+    for (var i=0; i < length; i++) {
+      characters.push(randomItem(charset));
+    }
+    const item = characters.join('');
+    return {
+      ...body,
+      [field]: item
+    };
+  }
+}
+
+export const mapper = (datasource) => {
+  const { type } = datasource;
+  return { type };
+}
