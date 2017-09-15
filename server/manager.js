@@ -1,17 +1,16 @@
-import _ from 'lodash';
-
 export function registerManager(server) {
-  const schemas = {};
-  const datasources = {};
-
-  function registerDatasource(options) {
-    const typeId = _.keys(options)[0];
-    const sourceClass = options[typeId];
-    _.set(datasources, typeId, sourceClass);
+  function getRegister(collection) {
+    return (key, item) => {
+      collection[key] = item;
+    }
   };
 
-  server.expose('datasources', {
-    register: registerDatasource,
-    datasources: datasources
-  });
+  const generators = {};
+  generators.register = getRegister(generators);
+
+  const mappers = {};
+  mappers.register = getRegister(mappers);
+
+  server.expose('generators', generators);
+  server.expose('mappers', mappers);
 };

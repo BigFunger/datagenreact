@@ -13,9 +13,12 @@ export default (server) => {
         datasources
       } = request.payload;
 
-      return updateMapping(callWithRequest, dataplan, datasources)
+      const mappers = server.plugins.datagenreact.mappers;
+      const generators = server.plugins.datagenreact.generators;
+
+      return updateMapping(callWithRequest, mappers, dataplan, datasources)
         .then((mapping) => {
-          return generateData(callWithRequest, dataplan, server);
+          return generateData(callWithRequest, generators, dataplan, datasources);
         })
         .then(reply)
         .catch((er) => {

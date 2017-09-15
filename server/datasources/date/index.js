@@ -1,11 +1,6 @@
-import { DateSource } from './date_source';
+import { generator, mapper } from './date_source';
 
 export function registerDate (server) {
-  const datagenreact = server.plugins.datagenreact;
-
-  datagenreact.datasources.register({
-    date: {
-      class: DateSource
-    }
-  });
+  server.plugins.datagenreact.generators.register('date', generator);
+  server.plugins.datagenreact.mappers.register('date', mapper);
 }

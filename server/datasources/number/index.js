@@ -1,11 +1,6 @@
-import { NumberSource } from './number_source';
+import { generator, mapper } from './number_source';
 
 export function registerNumber (server) {
-  const datagenreact = server.plugins.datagenreact;
-
-  datagenreact.datasources.register({
-    number: {
-      class: NumberSource
-    }
-  });
+  server.plugins.datagenreact.generators.register('number', generator);
+  server.plugins.datagenreact.mappers.register('number', mapper);
 }

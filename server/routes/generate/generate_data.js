@@ -1,25 +1,24 @@
-import _ from 'lodash';
 import { v4 } from 'node-uuid';
+import { mapSeries } from '../../lib/map_series';
 
-export function generateData(callWithRequest, dataplan, server) {
+export function generateData(callWithRequest, generators, dataplan, datasources) {
+  console.log('Generating data!');
   const promises = [];
 
-  for (let i=0;i < dataplan.numberOfDocuments;i++) {
-    promises.push(indexDocument(callWithRequest, dataplan, server));
+  for (let i=0; i < dataplan.numberOfDocuments; i++) {
+    promises.push(indexDocument(callWithRequest, generators, dataplan, datasources));
   }
 
   return mapSeries(promises);
 }
 
-function indexDocument(callWithRequest, dataplan, server) {
-  const datasourceClasses = server.plugins.datagenreact.datasources.datasources;
-  const body = {};
-  _.forEach(dataplan.datasources, (datasource) => {
-    const GeneratorClass = datasourceClasses[datasource.typeId].class;
-    const generator = new GeneratorClass(datasource);
-    const patch = generator.generate();
+function indexDocument(callWithRequest, generators, dataplan, datasources) {
+  let body = {};
 
-    Object.assign(body, patch);
+  datasources.allIds.forEach(id => {
+    const datasource = datasources.byId[id];
+    const generator = generators[datasource.type];
+    body = generator(datasource, body);
   });
 
   //TODO create a mechanic for adding scripts to modify the data.
@@ -30,15 +29,4 @@ function indexDocument(callWithRequest, dataplan, server) {
     id: v4(),
     body: body
   });
-}
-
-function mapSeries(arr) {
-  if (!Array.isArray(arr)) throw new Error('mapSeries requires an Array');
-  const length = arr.length;
-  const results = new Array(length);
-
-  arr.reduce((chain, item, i) => {
-    return chain.then(() => item).then(val => results[i] = val);
-  }, Promise.resolve())
-  .then(() => results);
 }

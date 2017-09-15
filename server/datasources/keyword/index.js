@@ -1,11 +1,6 @@
-import { KeywordSource } from './keyword_source';
+import { generator, mapper } from './keyword_source';
 
 export function registerKeyword (server) {
-  const datagenreact = server.plugins.datagenreact;
-
-  datagenreact.datasources.register({
-    keyword: {
-      class: KeywordSource
-    }
-  });
+  server.plugins.datagenreact.generators.register('keyword', generator);
+  server.plugins.datagenreact.mappers.register('keyword', mapper);
 }

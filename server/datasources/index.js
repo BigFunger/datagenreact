@@ -4,8 +4,8 @@ import { registerKeyword } from './keyword';
 import { registerText } from './text';
 
 export function registerDatasources(server) {
-  registerDate(server);
+  // registerDate(server);
   registerNumber(server);
-  registerKeyword(server);
+  // registerKeyword(server);
   registerText(server);
 }
