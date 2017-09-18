@@ -60,7 +60,7 @@ export class DatasourceDate extends React.Component {
         >
           <KuiFieldText
             name="field"
-            value={field || ''}
+            value={field}
             onChange={this.onChange('field')}
           />
         </KuiFormRow>
@@ -87,7 +87,7 @@ export class DatasourceDate extends React.Component {
           >
             <KuiFieldText
               name="value"
-              value={value || ''}
+              value={value}
               onChange={this.onChange('value')}
             />
           </KuiFormRow>
@@ -100,7 +100,7 @@ export class DatasourceDate extends React.Component {
           >
             <KuiFieldText
               name="startDate"
-              value={startDate || ''}
+              value={startDate}
               onChange={this.onChange('startDate')}
             />
           </KuiFormRow>
@@ -113,7 +113,7 @@ export class DatasourceDate extends React.Component {
           >
             <KuiFieldText
               name="endDate"
-              value={endDate || ''}
+              value={endDate}
               onChange={this.onChange('endDate')}
             />
           </KuiFormRow>
@@ -139,7 +139,7 @@ export class DatasourceDate extends React.Component {
           >
             <KuiFieldNumber
               name="initialOffset"
-              value={initialOffset || ''}
+              value={initialOffset}
               onChange={this.onChange('initialOffset')}
             />
           </KuiFormRow>
@@ -153,7 +153,7 @@ export class DatasourceDate extends React.Component {
           >
             <KuiFieldNumber
               name="distributionWindow"
-              value={distributionWindow || ''}
+              value={distributionWindow}
               onChange={this.onChange('distributionWindow')}
             />
           </KuiFormRow>
@@ -167,7 +167,7 @@ export class DatasourceDate extends React.Component {
           >
             <KuiFieldNumber
               name="distributionOffset"
-              value={distributionOffset || ''}
+              value={distributionOffset}
               onChange={this.onChange('distributionOffset')}
             />
           </KuiFormRow>

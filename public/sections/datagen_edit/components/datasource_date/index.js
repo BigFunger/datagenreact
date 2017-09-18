@@ -17,15 +17,15 @@ const mapStateToProps = (state, props) => {
   } = props;
   
   return {
-    field,
-    method,
-    value,
-    startDate,
-    endDate,
-    applyNormalDistribution,
-    initialOffset,
-    distributionWindow,
-    distributionOffset
+    field: field || '',
+    method: method || '',
+    value: value || '',
+    startDate: startDate || '',
+    endDate: endDate || '',
+    applyNormalDistribution: applyNormalDistribution || '',
+    initialOffset: initialOffset || '',
+    distributionWindow: distributionWindow || '',
+    distributionOffset: distributionOffset || ''
   };
 };
 

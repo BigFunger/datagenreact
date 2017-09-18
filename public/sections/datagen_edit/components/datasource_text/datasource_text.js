@@ -57,7 +57,7 @@ export class DatasourceText extends React.Component {
         >
           <KuiFieldText
             name="field"
-            value={field || ''}
+            value={field}
             onChange={this.onChange('field')}
           />
         </KuiFormRow>
@@ -67,7 +67,7 @@ export class DatasourceText extends React.Component {
         >
           <KuiSelect
             name="method"
-            value={method || 'values'}
+            value={method}
             onChange={this.onChange('method')}
             options={[
               { value: 'random', text: 'Randomly generated' },
@@ -84,7 +84,7 @@ export class DatasourceText extends React.Component {
             <KuiFieldNumber
               name="length"
               min={0}
-              value={length || ''}
+              value={length}
               onChange={this.onChange('length')}
             />
           </KuiFormRow>
@@ -97,7 +97,7 @@ export class DatasourceText extends React.Component {
           >
             <KuiFieldText
               name="charset"
-              value={charset || ''}
+              value={charset}
               onChange={this.onChange('charset')}
             />
           </KuiFormRow>
@@ -111,7 +111,7 @@ export class DatasourceText extends React.Component {
           >
             <KuiTextArea
               name="values"
-              value={values || ''}
+              value={values}
               onChange={this.onChange('values')}
             />
           </KuiFormRow>
@@ -123,7 +123,7 @@ export class DatasourceText extends React.Component {
         >
           <KuiFieldText
             name="analyzer"
-            value={analyzer || ''}
+            value={analyzer}
             onChange={this.onChange('analyzer')}
           />
         </KuiFormRow>
@@ -134,7 +134,7 @@ export class DatasourceText extends React.Component {
         >
           <KuiFieldText
             name="searchAnalyzer"
-            value={searchAnalyzer || ''}
+            value={searchAnalyzer}
             onChange={this.onChange('searchAnalyzer')}
           />
         </KuiFormRow>
@@ -145,7 +145,7 @@ export class DatasourceText extends React.Component {
         >
           <KuiFieldText
             name="searchQuoteAnalyzer"
-            value={searchQuoteAnalyzer || ''}
+            value={searchQuoteAnalyzer}
             onChange={this.onChange('searchQuoteAnalyzer')}
           />
         </KuiFormRow>

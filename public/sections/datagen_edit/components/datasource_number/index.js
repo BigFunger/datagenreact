@@ -13,11 +13,11 @@ const mapStateToProps = (state, props) => {
   } = props;
   
   return {
-    field,
-    type,
-    rangeMin,
-    rangeMax,
-    scalingFactor
+    field: field || '',
+    type: type || '',
+    rangeMin: rangeMin || '',
+    rangeMax: rangeMax || '',
+    scalingFactor: scalingFactor || ''
   };
 };
 

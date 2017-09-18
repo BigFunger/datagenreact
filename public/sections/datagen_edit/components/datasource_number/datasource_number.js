@@ -47,7 +47,7 @@ export class DatasourceNumber extends React.Component {
         >
           <KuiFieldText
             name="field"
-            value={field || ''}
+            value={field}
             onChange={this.onChange('field')}
           />
         </KuiFormRow>
@@ -78,7 +78,7 @@ export class DatasourceNumber extends React.Component {
         >
           <KuiFieldNumber
             name="rangeMin"
-            value={rangeMin || ''}
+            value={rangeMin}
             onChange={this.onChange('rangeMin')}
           />
         </KuiFormRow>
@@ -89,7 +89,7 @@ export class DatasourceNumber extends React.Component {
         >
           <KuiFieldNumber
             name="rangeMax"
-            value={rangeMax || ''}
+            value={rangeMax}
             onChange={this.onChange('rangeMax')}
           />
         </KuiFormRow>
@@ -101,7 +101,7 @@ export class DatasourceNumber extends React.Component {
           >
             <KuiFieldText
               name="scalingFactor"
-              value={scalingFactor || ''}
+              value={scalingFactor}
               onChange={this.onChange('scalingFactor')}
             />
           </KuiFormRow>

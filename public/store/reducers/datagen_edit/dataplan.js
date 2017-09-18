@@ -6,7 +6,7 @@ import {
 } from '../../actions/datagen_edit';
 
 const defaultState = {
-  indexName: 'myIndex',
+  indexName: 'my_index',
   typeName: 'docs',
   numberOfDocuments: 1000,
   dateCreated: null

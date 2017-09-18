@@ -43,12 +43,26 @@ export const mapper = (datasource) => {
     }
   } = datasource;
 
-  return {
+  const mapping = {
     [field]: {
       type,
       analyzer,
       search_analyzer,
       search_quote_analyzer
     }
+  };
+
+  if (!analyzer) {
+    delete mapping[field].analyzer;
   }
+  
+  if (!search_analyzer) {
+    delete mapping[field].search_analyzer;
+  }
+  
+  if (!search_quote_analyzer) {
+    delete mapping[field].search_quote_analyzer;
+  }
+
+  return mapping;
 }

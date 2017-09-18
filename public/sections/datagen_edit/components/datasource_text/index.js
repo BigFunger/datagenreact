@@ -16,14 +16,14 @@ const mapStateToProps = (state, props) => {
   } = props;
   
   return {
-    field,
-    analyzer,
-    searchAnalyzer,
-    searchQuoteAnalyzer,
-    charset,
-    method,
-    length,
-    values
+    field: field || '',
+    analyzer: analyzer || '',
+    searchAnalyzer: searchAnalyzer || '',
+    searchQuoteAnalyzer: searchQuoteAnalyzer || '',
+    charset: charset || '',
+    method: method || 'values',
+    length: length || '',
+    values: values || ''
   };
 };
 
