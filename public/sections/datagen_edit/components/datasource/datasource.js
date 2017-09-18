@@ -62,7 +62,6 @@ export class Datasource extends React.Component {
     const {
       datasource: {
         id,
-        field,
         type,
         detail
       },
@@ -85,16 +84,6 @@ export class Datasource extends React.Component {
               { value: 'date', text: 'Date' },
               { value: 'script', text: 'Script' }
             ]}
-          />
-        </KuiFormRow>
-        <KuiFormRow
-          id={makeId('field')}
-          label="Field name"
-        >
-          <KuiFieldText
-            name="field"
-            value={field || ''}
-            onChange={this.onChange('field')}
           />
         </KuiFormRow>
         {this.renderDetail(type, detail)}

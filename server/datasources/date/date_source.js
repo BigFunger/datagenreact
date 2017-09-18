@@ -4,8 +4,8 @@ import gaussian from 'gaussian';
 
 export const generator = (datasource, body) => {
   const {
-    field,
     detail: {
+      field,
       method,
       startDate,
       endDate,
@@ -61,6 +61,16 @@ export const generator = (datasource, body) => {
 }
 
 export const mapper = (datasource) => {
-  const { type } = datasource;
-  return { type };
+  const {
+    type,
+    detail: {
+      field
+    }
+  } = datasource;
+
+  return {
+    [field]: {
+      type
+    }
+  }
 }

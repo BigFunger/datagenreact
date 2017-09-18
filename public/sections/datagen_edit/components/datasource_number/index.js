@@ -4,6 +4,7 @@ import { DatasourceNumber as PresentationComponent } from './datasource_number';
 const mapStateToProps = (state, props) => {
   const {
     detail: {
+      field,
       type,
       rangeMin,
       rangeMax,
@@ -12,6 +13,7 @@ const mapStateToProps = (state, props) => {
   } = props;
   
   return {
+    field,
     type,
     rangeMin,
     rangeMax,

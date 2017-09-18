@@ -21,7 +21,7 @@ export class DatasourceList extends React.Component {
           isSelected={datasource.id === currentDatasourceId}
         >
           <button onClick={() => onDatasourceClicked(datasource.id)}>
-            {datasource.type} ({datasource.field})
+            {datasource.type}
           </button>
         </KuiSideNavItem>
       );

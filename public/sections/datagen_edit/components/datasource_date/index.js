@@ -4,6 +4,7 @@ import { DatasourceDate as PresentationComponent } from './datasource_date';
 const mapStateToProps = (state, props) => {
   const {
     detail: {
+      field,
       method,
       value,
       startDate,
@@ -16,6 +17,7 @@ const mapStateToProps = (state, props) => {
   } = props;
   
   return {
+    field,
     method,
     value,
     startDate,

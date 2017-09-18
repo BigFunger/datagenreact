@@ -11,24 +11,35 @@ import {
 } from 'ui_framework/components';
 
 export class DatasourceText extends React.Component {
-  onChange = (field, valueProp = 'value') => (event) => {
+  onChange = (valueField, valueProp = 'value') => (event) => {
+    const {
+      field,
+      method,
+      length,
+      charset,
+      values,
+      analyzer,
+      searchAnalyzer,
+      searchQuoteAnalyzer
+    } = this.props;
+
     this.props.onChange({
-      ...pick(this.props, [
-        'method',
-        'length',
-        'charset',
-        'values',
-        'analyzer',
-        'searchAnalyzer',
-        'searchQuoteAnalyzer'
-      ]),
-      [field]: event.target[valueProp]
+      field,
+      method,
+      length,
+      charset,
+      values,
+      analyzer,
+      searchAnalyzer,
+      searchQuoteAnalyzer,
+      [valueField]: event.target[valueProp]
     });
   }
 
   render = () => {
     const makeId = createHtmlIdGenerator(['datasource']);
     const {
+      field,
       method,
       length,
       charset,
@@ -40,6 +51,16 @@ export class DatasourceText extends React.Component {
 
     return (
       <div>
+        <KuiFormRow
+          id={makeId('field')}
+          label="Field name"
+        >
+          <KuiFieldText
+            name="field"
+            value={field || ''}
+            onChange={this.onChange('field')}
+          />
+        </KuiFormRow>
         <KuiFormRow
           id={makeId('method')}
           label="Value source"
@@ -133,6 +154,7 @@ export class DatasourceText extends React.Component {
   }
 
   static propTypes = {
+    field: PropTypes.string,
     analyzer: PropTypes.string,
     searchAnalyzer: PropTypes.string,
     searchQuoteAnalyzer: PropTypes.string,

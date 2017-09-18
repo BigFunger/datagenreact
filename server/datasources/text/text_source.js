@@ -2,8 +2,8 @@ import { randomItem } from '../../lib/random_item';
 
 export const generator = (datasource, body) => {
   const {
-    field,
     detail: {
+      field,
       method,
       values,
       charset,
@@ -36,6 +36,7 @@ export const mapper = (datasource) => {
   const {
     type,
     detail: {
+      field,
       analyzer,
       search_analyzer,
       search_quote_analyzer
@@ -43,9 +44,11 @@ export const mapper = (datasource) => {
   } = datasource;
 
   return {
-    type,
-    analyzer,
-    search_analyzer,
-    search_quote_analyzer
+    [field]: {
+      type,
+      analyzer,
+      search_analyzer,
+      search_quote_analyzer
+    }
   }
 }

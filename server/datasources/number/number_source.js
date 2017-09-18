@@ -2,8 +2,8 @@ import { random } from 'lodash';
 
 export const generator = (datasource, body) => {
   const {
-    field,
     detail: {
+      field,
       type,
       rangeMin,
       rangeMax
@@ -32,6 +32,7 @@ export const generator = (datasource, body) => {
 export const mapper = (datasource) => {
   const {
     detail: {
+      field,
       type,
       scalingFactor
     }
@@ -46,5 +47,7 @@ export const mapper = (datasource) => {
     delete mapping.scalingFactor
   };
 
-  return mapping;
+  return {
+    [field]: mapping
+  };
 }

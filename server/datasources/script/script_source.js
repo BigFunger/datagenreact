@@ -10,4 +10,4 @@ export const generator = (datasource, body) => {
   return eval(script);
 }
 
-export const mapper = (datasource) => {}
+export const mapper = (datasource) => ({})

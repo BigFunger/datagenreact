@@ -8,14 +8,14 @@ import {
 } from 'ui_framework/components';
 
 export class DatasourceScript extends React.Component {
-  onChange = (field, valueProp = 'value') => (event) => {
+  onChange = (valueField, valueProp = 'value') => (event) => {
     const {
       script
     } = this.props;
 
     this.props.onChange({
-      ...{ script },
-      [field]: event.target[valueProp]
+      script,
+      [valueField]: event.target[valueProp]
     });
   }
 

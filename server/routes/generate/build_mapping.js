@@ -3,11 +3,7 @@ export const buildMapping = (mappers, dataplan, datasources) => {
     const datasource = datasources.byId[id];
     const mapping = mappers[datasource.type](datasource);
 
-    if (mapping) {
-      acc[datasource.field] = mapping;
-    }
-
-    return acc;
+    return { ...acc, ...mapping};
   }, {});
 
   return {

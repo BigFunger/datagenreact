@@ -5,25 +5,34 @@ import { createHtmlIdGenerator } from '../../../../lib/html_id_generator';
 import {
   KuiFormRow,
   KuiFieldNumber,
-  KuiSelect
+  KuiSelect,
+  KuiFieldText
 } from 'ui_framework/components';
 
 export class DatasourceNumber extends React.Component {
-  onChange = (field, valueProp = 'value') => (event) => {
+  onChange = (valueField, valueProp = 'value') => (event) => {
+    const {
+      field,
+      type,
+      rangeMin,
+      rangeMax,
+      scalingFactor
+    } = this.props;
+
     this.props.onChange({
-      ...pick(this.props, [
-        'type',
-        'rangeMin',
-        'rangeMax',
-        'scalingFactor'
-      ]),
-      [field]: event.target[valueProp]
+      field,
+      type,
+      rangeMin,
+      rangeMax,
+      scalingFactor,
+      [valueField]: event.target[valueProp]
     });
   }
 
   render = () => {
     const makeId = createHtmlIdGenerator(['datasource']);
     const {
+      field,
       type,
       rangeMin,
       rangeMax,
@@ -32,6 +41,16 @@ export class DatasourceNumber extends React.Component {
 
     return (
       <div>
+        <KuiFormRow
+          id={makeId('field')}
+          label="Field name"
+        >
+          <KuiFieldText
+            name="field"
+            value={field || ''}
+            onChange={this.onChange('field')}
+          />
+        </KuiFormRow>
         <KuiFormRow
           id={makeId('type')}
           label="Numeric Type"
@@ -92,6 +111,7 @@ export class DatasourceNumber extends React.Component {
   }
 
   static propTypes = {
+    field: PropTypes.string,
     type: PropTypes.string,
     rangeMin: PropTypes.number,
     rangeMax: PropTypes.number,

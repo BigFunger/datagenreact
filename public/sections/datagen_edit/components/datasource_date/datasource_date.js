@@ -11,25 +11,37 @@ import {
 } from 'ui_framework/components';
 
 export class DatasourceDate extends React.Component {
-  onChange = (field, valueProp = 'value') => (event) => {
+  onChange = (valueField, valueProp = 'value') => (event) => {
+    const {
+      field,
+      method,
+      value,
+      startDate,
+      endDate,
+      applyNormalDistribution,
+      initialOffset,
+      distributionWindow,
+      distributionOffset
+    } = this.props;
+
     this.props.onChange({
-      ...pick(this.props, [
-        'method',
-        'value',
-        'startDate',
-        'endDate',
-        'applyNormalDistribution',
-        'initialOffset',
-        'distributionWindow',
-        'distributionOffset'
-      ]),
-      [field]: event.target[valueProp]
+      field,
+      method,
+      value,
+      startDate,
+      endDate,
+      applyNormalDistribution,
+      initialOffset,
+      distributionWindow,
+      distributionOffset,
+      [valueField]: event.target[valueProp]
     });
   }
 
   render = () => {
     const makeId = createHtmlIdGenerator(['datasource']);
     const {
+      field,
       method,
       value,
       startDate,
@@ -42,6 +54,16 @@ export class DatasourceDate extends React.Component {
 
     return (
       <div>
+        <KuiFormRow
+          id={makeId('field')}
+          label="Field name"
+        >
+          <KuiFieldText
+            name="field"
+            value={field || ''}
+            onChange={this.onChange('field')}
+          />
+        </KuiFormRow>
         <KuiFormRow
           id={makeId('method')}
           label="Value source"
@@ -155,6 +177,7 @@ export class DatasourceDate extends React.Component {
   }
 
   static propTypes = {
+    field: PropTypes.string,
     method: PropTypes.string,
     value: PropTypes.string,
     startDate: PropTypes.string,
