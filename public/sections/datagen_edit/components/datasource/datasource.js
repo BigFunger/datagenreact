@@ -15,7 +15,8 @@ import {
 import {
   DatasourceText,
   DatasourceNumber,
-  DatasourceDate
+  DatasourceDate,
+  DatasourceScript
 } from '../../components';
 
 export class Datasource extends React.Component {
@@ -37,7 +38,8 @@ export class Datasource extends React.Component {
     const DetailNodeTypes = {
       'text': DatasourceText,
       'number': DatasourceNumber,
-      'date': DatasourceDate
+      'date': DatasourceDate,
+      'script': DatasourceScript
     };
     const DetailNodeType = DetailNodeTypes[type];
 
@@ -80,7 +82,8 @@ export class Datasource extends React.Component {
             options={[
               { value: 'text', text: 'Text' },
               { value: 'number', text: 'Number' },
-              { value: 'date', text: 'Date' }
+              { value: 'date', text: 'Date' },
+              { value: 'script', text: 'Script' }
             ]}
           />
         </KuiFormRow>

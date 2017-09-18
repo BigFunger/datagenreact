@@ -8,6 +8,7 @@ export { DatasourceList } from './datasource_list';
 export { DatasourceNumber } from './datasource_number';
 export { Datasources } from './datasources';
 export { DatasourceText } from './datasource_text';
+export { DatasourceScript } from './datasource_script';
 export { PageContent } from './page_content';
 export { PageSidebar } from './page_sidebar';
 export { Tabs } from './tabs';
